@@ -30,7 +30,7 @@ int main(){
 				numeroacertos += 1;
 			}
 		}
-		printf("a nota do %d e %f\n", i, (10/numeroquestoes) * (numeroacertos));
+		printf("a nota do %d e %.2f\n", i, (10 * numeroacertos) / (numeroquestoes));
 		numeroacertos = 0;
 	}
  	for(i = 0; i < numeroalunos; i++){
