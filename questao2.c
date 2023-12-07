@@ -2,8 +2,7 @@
 #include<stdlib.h>
 
 int main(){
-    int numeroquestoes, numeroalunos, i, j;
-    float numeroacertos = 0;
+    int numeroquestoes, numeroalunos, numerosaprovados, numeroacertos = 0, i, j;
     printf("Digite a quantidade de questoes\n");
     scanf("%d", &numeroquestoes); 
     char *gabarito = (char *) malloc(numeroquestoes * sizeof(char));
@@ -31,8 +30,12 @@ int main(){
 			}
 		}
 		printf("a nota do %d e %.2f\n", i, (10 * numeroacertos) / (numeroquestoes));
+		if((10 * numeroacertos) / (numeroquestoes) < 6){
+			numerosaprovados += 1;
+		}
 		numeroacertos = 0;
 	}
+	printf("a porcentagem de alunos aprovados e %f%%", numeroquestoes);
  	for(i = 0; i < numeroalunos; i++){
 		free(alunos[i]);
 	}
