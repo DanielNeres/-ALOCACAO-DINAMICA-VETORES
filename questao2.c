@@ -3,6 +3,7 @@
 
 int main(){
     int numeroquestoes, numeroalunos, i, j;
+    float numeroacertos = 0;
     printf("Digite a quantidade de questoes\n");
     scanf("%d", &numeroquestoes); 
     char *gabarito = (char *) malloc(numeroquestoes * sizeof(char));
@@ -29,9 +30,11 @@ int main(){
 				numeroacertos += 1;
 			}
 		}
+		printf("a nota do %d e %f\n", i, (10/numeroquestoes) * (numeroacertos));
+		numeroacertos = 0;
 	}
- 	for(i = 0; i < linhas; i++){
-		free(alunos][i]);
+ 	for(i = 0; i < numeroalunos; i++){
+		free(alunos[i]);
 	}
 	free(alunos);
  	free(gabarito);
