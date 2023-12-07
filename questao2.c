@@ -23,6 +23,17 @@ int main(){
             scanf(" %c", &alunos[i][j]);
         }
     }
-
+    for(i = 0; i < numeroalunos; i++){
+		for(j = 0; j < numeroquestoes; j++){
+			if(alunos[i][j] == gabarito[j]){
+				numeroacertos += 1;
+			}
+		}
+	}
+ 	for(i = 0; i < linhas; i++){
+		free(alunos][i]);
+	}
+	free(alunos);
+ 	free(gabarito);
     return 0;
 }
