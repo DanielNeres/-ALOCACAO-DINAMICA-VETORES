@@ -3,7 +3,7 @@
 #include<string.h>
 int main()
 {
-	int numeroparticipantes = 0, numerohomens = 0, numeromulheres = 0, i, j;
+	int numeroparticipantes = 0, numerohomens = 0, numeromulheres = 0, numerohomensNgostaram = 0, numeromulheresGostaram = 0, i;
     printf("didite o numero de participantes\n");
     scanf("%d", &numeroparticipantes);
 	char **genero = (char **) malloc(numeroparticipantes * sizeof(char *));
@@ -15,20 +15,30 @@ int main()
         opinao[i] = (char *) malloc(12 * sizeof(char));
     }
     for(i = 0; numeroparticipantes > i; i++){
-        printf("Qual o genero do participante %d", i +!);
-        scanf("%c", genero + i);
-        scanf("%c", opinao + i);
+        printf("Qual o genero do participante %d M/F\n", i +1);
+        scanf("%^[\n]", genero + i);
+        printf("Qual a opinião do participante %d gostou/não gostou\n", i +1);
+        scanf("%^[\n]", opinao + i);
     }
     for(i = 0; i < numeroparticipantes; i++){
-        if((strcmp("M", genero[i]) == 0) || (strcmp("m", opinao[i]))){
+        if((strcmp("M", genero[i]) == 0) || (strcmp("m", genero[i]))){
             numerohomens += 1;
         }
-        else if ((strcmp("M", genero[i]) == 0) || (strcmp("m", opinao[i]))){
+        else if ((strcmp("F", genero[i]) == 0) || (strcmp("f", genero[i]))){
             numeromulheres += 1;
         }else{
             numeroparticipantes -= 1;
         }
+        if(((strcmp("M", genero[i]) == 0) || (strcmp("m", genero[i]))) && ((strcmp("não gostou", genero[i])) || (strcmp("Não gostou", genero[i])))){
+            numerohomensNgostaram += 1;
+        } else if (((strcmp("F", genero[i]) == 0) || (strcmp("f", genero[i]))) && ((strcmp("gostou", genero[i])) || (strcmp("Gostou", genero[i])))){
+            numeromulheresGostaram += 1;
+        }
         
+    }
+    for (i = 0; i < numeroparticipantes; i++) {
+        free(genero[i]);
+        free(opinao[i]);
     }
 	free(genero);
     free(opinao);
