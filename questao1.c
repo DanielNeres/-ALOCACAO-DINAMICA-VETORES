@@ -4,6 +4,6 @@ int main()
 {
 	int numeroparticipantes;
 	char **genero = (char **) malloc(numeroparticipantes * sizeof(char *));
-	
+	char **opinao = (char **) malloc(numeroparticipantes * sizeof(char *));
 	return 0;
 }
