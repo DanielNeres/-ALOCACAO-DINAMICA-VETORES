@@ -27,14 +27,14 @@ int main()
         else if ((strcmp("F", genero[i]) == 0) || (strcmp("f", genero[i]))){
             numeromulheres += 1;
         }
-        if(((strcmp("M", genero[i]) == 0) || (strcmp("m", genero[i]))) && ((strcmp("não gostou", genero[i])) || (strcmp("Não gostou", genero[i])))){
+        if(((strcmp("M", genero[i]) == 0) || (strcmp("m", genero[i]) == 0)) && ((strcmp("nao gostou", opinao[i]) == 0) || (strcmp("Nao gostou", opinao[i]) == 0))){
             numerohomensNgostaram += 1;
-        } else if (((strcmp("F", genero[i]) == 0) || (strcmp("f", genero[i]))) && ((strcmp("gostou", genero[i])) || (strcmp("Gostou", genero[i])))){
+        } else if (((strcmp("F", genero[i]) == 0) || (strcmp("f", genero[i]) == 0)) && ((strcmp("gostou", opinao[i]) == 0) || (strcmp("Gostou", opinao[i]) == 0))){
             numeromulheresGostaram += 1;
         }
-        
     }
-    printf("a porcentagem de homens que nao gostaram e %d%%\n", (numerohomensNgostaram / numerohomens) * 100);
+    printf("a porcentagem de homens que nao gostaram e %.2f%%\n", ((float)numerohomensNgostaram / numerohomens) * 100);
+    printf("a porcentagem de mulheres que gostaram e %.2f%%\n", ((float)numeromulheresGostaram / numeromulheres) * 100);
     for (i = 0; i < numeroparticipantes; i++) {
         free(genero[i]);
         free(opinao[i]);
