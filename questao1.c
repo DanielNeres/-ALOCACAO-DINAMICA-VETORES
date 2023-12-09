@@ -21,10 +21,10 @@ int main()
         scanf(" %[^\n]", opinao[i]);
     }
     for(i = 0; i < numeroparticipantes; i++){
-        if((strcmp("M", genero[i]) == 0) || (strcmp("m", genero[i]))){
+        if((strcmp("M", genero[i]) == 0) || (strcmp("m", genero[i]) == 0)){
             numerohomens += 1;
         }
-        else if ((strcmp("F", genero[i]) == 0) || (strcmp("f", genero[i]))){
+        else if ((strcmp("F", genero[i]) == 0) || (strcmp("f", genero[i]) == 0)){
             numeromulheres += 1;
         }
         if(((strcmp("M", genero[i]) == 0) || (strcmp("m", genero[i]) == 0)) && ((strcmp("nao gostou", opinao[i]) == 0) || (strcmp("Nao gostou", opinao[i]) == 0))){
