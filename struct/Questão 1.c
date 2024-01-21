@@ -58,6 +58,9 @@ void mudarsalario(Dadosfuncionario *Funcionario){
 }
 
 void imprimir(Dadosfuncionario *Funcionario, int quantidadefuncionarios){
-    printf(" dados do funcionario %d\nnome: %s\n cargo: %s\n identificacao: %d\n salario: %f\n", quantidadefuncionarios, (*Funcionario).nome, (*Funcionario).cargo, (*Funcionario).identificador, (*Funcionario).salario);
+	int i;
+	for(i = 0; i < quantidadefuncionarios; i++){
+    	printf(" dados do funcionario %d\nnome: %s\n cargo: %s\n identificacao: %d\n salario: %f\n", (i + 1), (*Funcionario).nome, (*Funcionario).cargo, (*Funcionario).identificador, (*Funcionario).salario);
+	}
 }
 
