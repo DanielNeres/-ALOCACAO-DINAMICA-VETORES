@@ -19,7 +19,7 @@ int main(){
 	return 0;
 }
 
-int maxfuncionarios;
+int maxfuncionarios, quantidadefuncionarios = 0;
 void TamanhoFuncionario(){
 	printf("digite a quantidade de funcionario maxima\n");
 	scanf("%i", &maxfuncionarios);
@@ -27,7 +27,7 @@ void TamanhoFuncionario(){
 }
 
 void menu(){
-	int escolhamenu, quantidadefuncionarios = 0;
+	int escolhamenu;
 	Dadosfuncionario * Funcionario = (Dadosfuncionario*) malloc(sizeof(Dadosfuncionario)*maxfuncionarios);
 	if(Funcionario == NULL){
 		exit(1);
@@ -42,24 +42,30 @@ void menu(){
 	switch(escolhamenu){
 	case 1:
 		if(quantidadefuncionarios == maxfuncionarios){
-			printf("quantidade maxima de funcionarios atingida\n");
+			system("cls");
+			printf("quantidade maxima de funcionarios atingida\n\n");
 			menu();
 		}
+		system("cls");
 		preencher(Funcionario, quantidadefuncionarios);
 		quantidadefuncionarios++;
 		break;
 	case 2:
 		if(quantidadefuncionarios == 0){
-			printf("nenhum funcionario cadastrado\n");
+			system("cls");
+			printf("nenhum funcionario cadastrado\n\n");
 			menu();
 		}
+		system("cls");
 		imprimir(Funcionario, quantidadefuncionarios);
 		break;
 	case 3:
 		if(quantidadefuncionarios == 0){
-			printf("nenhum funcionario cadastrado\n");
+			system("cls");
+			printf("nenhum funcionario cadastrado\n\n");
 			menu();
 		}
+		system("cls");
 		mudarsalario(Funcionario, quantidadefuncionarios);
 	default:
 		exit(1);
@@ -70,8 +76,10 @@ void menu(){
 void RetornarMenu(){
 	char retornoMenu;
 	printf("caso desejar retornar para o menu digite M, ou digite qualquer tecla para sair\n");
-	scanf("%c", retornoMenu);
+	while (getchar() != '\n');
+	retornoMenu = getchar();
 	if(retornoMenu == 'M' || retornoMenu == 'm'){
+		system("cls");
 		menu();
 	}
 }
