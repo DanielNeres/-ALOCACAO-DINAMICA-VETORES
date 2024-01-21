@@ -2,7 +2,7 @@
 #include<stdlib.h>
 typedef struct{
 char nome[40];
-char funcao[20];
+char cargo[20];
 int identificador;
 float salario;
 } Dadosfuncionario;
@@ -27,16 +27,16 @@ int main(){
     return 0;
 }
 
-void preencher(SVpublico *Funcionario){
+void preencher(Dadosfuncionario *Funcionario){
     printf("digite o nome\n");
-    scanf("%[^\n]", (*Funcionario).nome);
-    printf("digite a idade\n");
-    scanf("%d", &(*Funcionario).idade);
-    printf("digite a funcao\n");
-    scanf(" %[^\n]", (*Funcionario).funcao);
-    printf("digite o RG\n");
-    scanf("%d", &(*Funcionario).RG);
+    scanf(" %[^\n]", (*Funcionario).nome);
+    printf("digite a cargo\n");
+    scanf(" %[^\n]", (*Funcionario).cargo);
+    printf("digite a identificacao\n");
+    scanf("%d", &(*Funcionario).identificador);
+    printf("digite o salario\n");
+    scanf("%d", &(*Funcionario).salario);
 }
-void imprimir(SVpublico *Funcionario){
-    printf(" nome: %s\n idade: %d\n RG: %d\n Funcao: %s\n", (*Funcionario).nome, (*Funcionario).idade, (*Funcionario).RG, (*Funcionario).funcao );
+void imprimir(Dadosfuncionario *Funcionario){
+    printf(" nome: %s\n idade: %d\n RG: %d\n cargo: %s\n", (*Funcionario).nome, (*Funcionario).idade, (*Funcionario).RG, (*Funcionario).cargo );
 }
