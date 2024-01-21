@@ -1,36 +1,37 @@
 #include<stdio.h>
 #include<stdlib.h>
-typedef struct SVpublico{
-char nome[20];
-int idade;
-int RG;
-char funcao[30];
-} SVpublico;
+typedef struct{
+char nome[40];
+char funcao[20];
+int identificador;
+float salario;
+} Dadosfuncionario;
 
-void preencher(SVpublico *Leandros);
-void imprimir(SVpublico *Leandros);
+void preencher(Dadosfuncionario *Funcionario);
+void imprimir(Dadosfuncionario *Funcionario);
+void mudarsalario(Dadosfuncionario *Funcionario);
 
 int main(){
-    SVpublico * Leandros = (SVpublico*) malloc(sizeof(SVpublico));
-    if(Leandros == NULL){
+    Dadosfuncionario * Funcionario = (Dadosfuncionario*) malloc(sizeof(Dadosfuncionario));
+    if(Funcionario == NULL){
         exit(1);
     }
-    preencher(Leandros);
-    imprimir(Leandros);
-    free(Leandros);
+    preencher(Funcionario);
+    imprimir(Funcionario);
+    free(Funcionario);
     return 0;
 }
 
-void preencher(SVpublico *Leandros){
+void preencher(SVpublico *Funcionario){
     printf("digite o nome\n");
-    scanf("%[^\n]", (*Leandros).nome);
+    scanf("%[^\n]", (*Funcionario).nome);
     printf("digite a idade\n");
-    scanf("%d", &(*Leandros).idade);
+    scanf("%d", &(*Funcionario).idade);
     printf("digite a funcao\n");
-    scanf(" %[^\n]", (*Leandros).funcao);
+    scanf(" %[^\n]", (*Funcionario).funcao);
     printf("digite o RG\n");
-    scanf("%d", &(*Leandros).RG);
+    scanf("%d", &(*Funcionario).RG);
 }
-void imprimir(SVpublico *Leandros){
-    printf(" nome: %s\n idade: %d\n RG: %d\n Funcao: %s\n", (*Leandros).nome, (*Leandros).idade, (*Leandros).RG, (*Leandros).funcao );
+void imprimir(SVpublico *Funcionario){
+    printf(" nome: %s\n idade: %d\n RG: %d\n Funcao: %s\n", (*Funcionario).nome, (*Funcionario).idade, (*Funcionario).RG, (*Funcionario).funcao );
 }
