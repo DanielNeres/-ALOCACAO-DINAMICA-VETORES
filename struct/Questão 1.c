@@ -16,6 +16,11 @@ int main(){
     if(Funcionario == NULL){
         exit(1);
     }
+    printf("\tMENU\n");
+    printf("escolha o numero de uma das opicoes abaixo\n");
+    printf("1. preencher informacoes do funcionario\n");
+    printf("2. imprimir informacoes do funcionario\n");
+    printf("3. preencher informacoes do funcionario\n");
     preencher(Funcionario);
     imprimir(Funcionario);
     free(Funcionario);
