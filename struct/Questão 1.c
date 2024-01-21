@@ -7,6 +7,7 @@ typedef struct{
 	float salario;
 } Dadosfuncionario;
 
+void TamanhoFuncionario();
 void menu();
 void RetornarMenu();
 void preencher(Dadosfuncionario *Funcionario, int quantidadefuncionarios);
@@ -14,14 +15,19 @@ void imprimir(Dadosfuncionario *Funcionario, int quantidadefuncionarios);
 void mudarsalario(Dadosfuncionario *Funcionario, int quantidadefuncionarios);
 
 int main(){
-	menu();
+	TamanhoFuncionario();
 	return 0;
 }
 
-void menu(){
-	int escolhamenu, quantidadefuncionarios = 0, maxfuncionarios;
+int maxfuncionarios;
+void TamanhoFuncionario(){
 	printf("digite a quantidade de funcionario maxima\n");
 	scanf("%i", &maxfuncionarios);
+	menu();
+}
+
+void menu(){
+	int escolhamenu, quantidadefuncionarios = 0;
 	Dadosfuncionario * Funcionario = (Dadosfuncionario*) malloc(sizeof(Dadosfuncionario)*maxfuncionarios);
 	if(Funcionario == NULL){
 		exit(1);
@@ -64,7 +70,7 @@ void menu(){
 void RetornarMenu(){
 	char retornoMenu;
 	printf("caso desejar retornar para o menu digite M, ou digite qualquer tecla para sair\n");
-	scanf("%c", &retornoMenu);
+	scanf("%c", retornoMenu);
 	if(retornoMenu == 'M' || retornoMenu == 'm'){
 		menu();
 	}
