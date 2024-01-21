@@ -8,32 +8,36 @@ typedef struct{
 } Dadosfuncionario;
 
 void preencher(Dadosfuncionario *Funcionario);
-//void imprimir(Dadosfuncionario *Funcionario);
+void imprimir(Dadosfuncionario *Funcionario, int quantidadefuncionarios);
 void mudarsalario(Dadosfuncionario *Funcionario);
 
 int main(){
+	int escolhamenu, quantidadefuncionarios = 0;
 	Dadosfuncionario * Funcionario = (Dadosfuncionario*) malloc(sizeof(Dadosfuncionario));
 	if(Funcionario == NULL){
 		exit(1);
 	}
 	printf("\tMENU\n");
-	printf("escolha o numero de uma das opicoes abaixo\n");
 	printf("1. preencher informacoes do funcionario\n");
 	printf("2. imprimir informacoes do funcionario\n");
 	printf("3. preencher informacoes do funcionario\n");
-	int escolhamenu;
+	printf("escolha o numero de uma das opicoes acima\n");
+
 	scanf("%i", &escolhamenu);
 	switch(escolhamenu){
 	case 1:
 		preencher(Funcionario);
+		quantidadefuncionarios++;
 		break;
+	case 2:
+		imprimir(Funcionario, quantidadefuncionarios);
+		break;
+	case 3:
+		mudarsalario(Funcionario);
 	default:
 		exit(1);
 		break;
 	}
-	preencher(Funcionario);
-	//imprimir(Funcionario);
-	free(Funcionario);
 	return 0;
 }
 
@@ -47,8 +51,13 @@ void preencher(Dadosfuncionario *Funcionario){
 	printf("digite o salario\n");
 	scanf("%f", &(*Funcionario).salario);
 }
-/*
-void imprimir(Dadosfuncionario *Funcionario){
-    printf(" nome: %s\n idade: %d\n RG: %d\n cargo: %s\n", (*Funcionario).nome, (*Funcionario).idade, (*Funcionario).RG, (*Funcionario).cargo );
+
+void mudarsalario(Dadosfuncionario *Funcionario){
+	printf("digite o novo salario do funcionario");
+	scanf("%f", &(*Funcionario).salario);
 }
-*/
+
+void imprimir(Dadosfuncionario *Funcionario, int quantidadefuncionarios){
+    printf(" dados do funcionario %d\nnome: %s\n cargo: %s\n identificacao: %d\n salario: %f\n", quantidadefuncionarios, (*Funcionario).nome, (*Funcionario).cargo, (*Funcionario).identificador, (*Funcionario).salario);
+}
+
