@@ -12,8 +12,10 @@ void imprimir(Dadosfuncionario *Funcionario, int quantidadefuncionarios);
 void mudarsalario(Dadosfuncionario *Funcionario);
 
 int main(){
-	int escolhamenu, quantidadefuncionarios = 0;
-	Dadosfuncionario * Funcionario = (Dadosfuncionario*) malloc(sizeof(Dadosfuncionario));
+	int escolhamenu, quantidadefuncionarios = 0, maxfuncionario;
+	printf("digite a quantidade de funcionario maxima\n");
+	scanf("%i", &maxfuncionario);
+	Dadosfuncionario * Funcionario = (Dadosfuncionario*) malloc(sizeof(Dadosfuncionario)*maxfuncionario);
 	if(Funcionario == NULL){
 		exit(1);
 	}
