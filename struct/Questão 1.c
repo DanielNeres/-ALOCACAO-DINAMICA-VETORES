@@ -28,11 +28,13 @@ void menu(){
 	if(Funcionario == NULL){
 		exit(1);
 	}
+	system("cls");
 	do{
 	printf("MENU\n");
 	printf("1. preencher informacoes do funcionario\n");
 	printf("2. imprimir informacoes do funcionario\n");
-	printf("3. preencher informacoes do funcionario\n");
+	printf("3. mudar salario dos funcionarios\n");
+	printf("4. imprecao do cargo com maior e menor salario\n");
 	printf("escolha o numero de uma das opicoes acima\n");
 
 	scanf("%i", &escolhamenu);
@@ -69,6 +71,17 @@ void menu(){
 			}
 			system("cls");
 			mudarsalario(Funcionario, quantidadefuncionarios);
+			Menu = RetornarMenu();
+			break;
+			case 4:
+			if(quantidadefuncionarios == 0){
+				system("cls");
+				printf("nenhum funcionario cadastrado\n\n");
+				Menu = 1;
+				break;
+			}
+			system("cls");
+			MaioreMenorSalario(Funcionario, quantidadefuncionarios);
 			Menu = RetornarMenu();
 			break;
 		default:
@@ -113,7 +126,7 @@ void imprimir(Dadosfuncionario *Funcionario, int quantidadefuncionarios){
 		printf("nome: %s\n", Funcionario[i].nome);
 		printf("cargo: %s\n", Funcionario[i].cargo);
 		printf("identificacao: %d\n", Funcionario[i].identificador);
-		printf("salario: %f\n", Funcionario[i].salario);
+		printf("salario: R$%f\n", Funcionario[i].salario);
 	}
 }
 
@@ -131,7 +144,7 @@ void mudarsalario(Dadosfuncionario *Funcionario, int quantidadefuncionarios){
 
 void MaioreMenorSalario(Dadosfuncionario *Funcionario, int quantidadefuncionarios){
 	int i, MaiorSalario = 0, MenorSalario = 0;
-	for(i = 0; i < quantidadefuncionarios; i++){
+	for(i = 1; i < quantidadefuncionarios; i++){
     	if(Funcionario[i].salario < Funcionario[MenorSalario].salario){
 			MenorSalario = i;
 		}
@@ -139,8 +152,8 @@ void MaioreMenorSalario(Dadosfuncionario *Funcionario, int quantidadefuncionario
 			MaiorSalario = i;
 		}
 	}
-	printf("%s e o cargo que recebe menos, com o salario de R$%f;", Funcionario[MenorSalario].cargo, Funcionario[MenorSalario].salario);
-	printf("%s e o cargo que recebe mais, com o salario de R$%f.", Funcionario[MaiorSalario].cargo, Funcionario[MaiorSalario].salario);
+	printf("%s e o cargo que recebe menos, com o salario de R$%f;\n", Funcionario[MenorSalario].cargo, Funcionario[MenorSalario].salario);
+	printf("%s e o cargo que recebe mais, com o salario de R$%f.\n", Funcionario[MaiorSalario].cargo, Funcionario[MaiorSalario].salario);
 }
 
 
