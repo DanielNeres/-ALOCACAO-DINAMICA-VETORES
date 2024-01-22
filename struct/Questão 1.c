@@ -41,36 +41,40 @@ void menu(){
 			if(quantidadefuncionarios == maxfuncionarios){
 				system("cls");
 				printf("quantidade maxima de funcionarios atingida\n\n");
-				menu();
+				Menu = 1;
+				break;
 			}
 			system("cls");
 			preencher(Funcionario, quantidadefuncionarios);
 			quantidadefuncionarios++;
-			RetornarMenu();
+			Menu = RetornarMenu();
 			break;
 		case 2:
 			if(quantidadefuncionarios == 0){
 				system("cls");
 				printf("nenhum funcionario cadastrado\n\n");
-				menu();
+				Menu = 1;
+				break;
 			}
 			system("cls");
 			imprimir(Funcionario, quantidadefuncionarios);
-			RetornarMenu();
+			Menu = RetornarMenu();
 			break;
 		case 3:
 			if(quantidadefuncionarios == 0){
 				system("cls");
 				printf("nenhum funcionario cadastrado\n\n");
-				menu();
+				Menu = 1;
+				break;
 			}
 			system("cls");
 			mudarsalario(Funcionario, quantidadefuncionarios);
-			RetornarMenu();
-			default:
-				exit(1);
-				break;
-			}
+			Menu = RetornarMenu();
+			break;
+		default:
+			exit(1);
+			break;
+		}
 		
 	}while(Menu == 1);
 }
@@ -91,7 +95,6 @@ int RetornarMenu(){
 }
 
 void preencher(Dadosfuncionario *Funcionario, int quantidadefuncionarios){
-	printf("%d\n", quantidadefuncionarios);
 	printf("preencha dados do funcionario %d\n", quantidadefuncionarios + 1);
 	printf("digite o nome\n");
 	scanf(" %[^\n]", Funcionario[quantidadefuncionarios].nome);
@@ -105,25 +108,23 @@ void preencher(Dadosfuncionario *Funcionario, int quantidadefuncionarios){
 
 void imprimir(Dadosfuncionario *Funcionario, int quantidadefuncionarios){
 	int i;
-	printf("%d\n", quantidadefuncionarios);
 	for(i = 0; i < quantidadefuncionarios; i++){
-    	printf("dados do funcionario %d\n", i);
-    		printf("%d\n", i);
-		printf("nome: %s\n", Funcionario[0].nome);
-		printf("cargo: %s\n", Funcionario[0].cargo);
-		printf("identificacao: %d\n", Funcionario[0].identificador);
-		printf("salario: %f\n", Funcionario[0].salario);
+    	printf("dados do funcionario %d\n", i + 1);
+		printf("nome: %s\n", Funcionario[i].nome);
+		printf("cargo: %s\n", Funcionario[i].cargo);
+		printf("identificacao: %d\n", Funcionario[i].identificador);
+		printf("salario: %f\n", Funcionario[i].salario);
 	}
 }
 
 void mudarsalario(Dadosfuncionario *Funcionario, int quantidadefuncionarios){
 	int escolhaMudar, i;
-	printf("escolha o funcionario ");
+	printf("escolha o funcionario entre os numeros ");
 	for(i = 1; i <= quantidadefuncionarios; i++){
 		printf("%d ", i);
 	}
-	scanf("%d", &escolhaMudar);
 	printf("para mudar o salario\n");
+	scanf("%d", &escolhaMudar);
 	printf("digite o novo salario do funcionario\n");
 	scanf("%f", &Funcionario[escolhaMudar - 1].salario);
 }
