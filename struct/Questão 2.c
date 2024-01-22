@@ -171,6 +171,6 @@ void MaioreMenorIdade(DadosPessoais *Pessoas, int quantidadePessoas)
 			MaiorIdade = i;
 		}
 	}
-	printf("%s e a pessoa mais nova, com %d de idade;\n", Pessoas[MenorIdade].nome, Pessoas[MenorIdade].idade);
-	printf("%s e a pessoa mais velha, com %d de idade.\n", Pessoas[MaiorIdade].nome, Pessoas[MaiorIdade].idade);
+	printf("%s e a pessoa mais nova, com %d anos;\n", Pessoas[MenorIdade].nome, Pessoas[MenorIdade].idade);
+	printf("%s e a pessoa mais velha, com %d anos.\n", Pessoas[MaiorIdade].nome, Pessoas[MaiorIdade].idade);
 }
