@@ -22,7 +22,7 @@ void preencher(produto *p)
 	int escolha;
 	printf("Digite o nome: ");
 	scanf(" %[^\n]", p->nome);
-	printf("Digite o pre�o: ");
+	printf("Digite o preco: ");
 	scanf("%f", &p->preco);
 	printf("digite 1 para ALIMENTO ou 2 para BEBIDA ou 3 para ELETRONICO\n");
 	scanf("%d", &escolha);
