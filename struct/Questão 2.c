@@ -33,7 +33,7 @@ void menu(){
 	printf("1. preencher informacoes da pessoa\n");
 	printf("2. imprimir informacoes da pessoa\n");
 	printf("3. mudar salario dos funcionarios\n");
-	printf("4. imprecao do cargo com maior e menor salario\n");
+	printf("4. imprecao do Nome com maior e menor salario\n");
 	printf("escolha o numero de uma das opicoes acima\n");
 
 	scanf("%i", &escolhamenu);
@@ -148,6 +148,6 @@ void MaioreMenorIdade(DadosPessoais *Pessoas, int quantidadePessoas){
 			MaiorIdade = i;
 		}
 	}
-	printf("%s e o cargo que recebe menos, com a idade de R$%d;\n", Pessoas[MenorIdade].cargo, Pessoas[MenorIdade].idade);
-	printf("%s e o cargo que recebe mais, com a idade de R$%d.\n", Pessoas[MaiorIdade].cargo, Pessoas[MaiorIdade].idade);
+	printf("%s e a pessoa mais nova, com %d de idade;\n", Pessoas[MenorIdade].Nome, Pessoas[MenorIdade].idade);
+	printf("%s e a pessoa maisvelha, com %d de idade.\n", Pessoas[MaiorIdade].Nome, Pessoas[MaiorIdade].idade);
 }
