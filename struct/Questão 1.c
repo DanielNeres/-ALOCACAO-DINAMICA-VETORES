@@ -19,7 +19,7 @@ int main(){
 	return 0;
 }
 
-int maxfuncionarios, quantidadefuncionarios = 0;
+int maxfuncionarios;
 void TamanhoFuncionario(){
 	printf("digite a quantidade de funcionario maxima\n");
 	scanf("%i", &maxfuncionarios);
@@ -27,7 +27,7 @@ void TamanhoFuncionario(){
 }
 
 void menu(){
-	int escolhamenu;
+	int escolhamenu, quantidadefuncionarios = 0;
 	Dadosfuncionario * Funcionario = (Dadosfuncionario*) malloc(sizeof(Dadosfuncionario)*maxfuncionarios);
 	if(Funcionario == NULL){
 		exit(1);
@@ -40,36 +40,39 @@ void menu(){
 
 	scanf("%i", &escolhamenu);
 	switch(escolhamenu){
-	case 1:
-		if(quantidadefuncionarios == maxfuncionarios){
+		case 1:
+			if(quantidadefuncionarios == maxfuncionarios){
+				system("cls");
+				printf("quantidade maxima de funcionarios atingida\n\n");
+				menu();
+			}
 			system("cls");
-			printf("quantidade maxima de funcionarios atingida\n\n");
-			menu();
-		}
-		system("cls");
-		preencher(Funcionario, quantidadefuncionarios);
-		quantidadefuncionarios++;
-		break;
-	case 2:
-		if(quantidadefuncionarios == 0){
+			preencher(Funcionario, quantidadefuncionarios);
+			quantidadefuncionarios++;
+			RetornarMenu();
+			break;
+		case 2:
+			if(quantidadefuncionarios == 0){
+				system("cls");
+				printf("nenhum funcionario cadastrado\n\n");
+				menu();
+			}
 			system("cls");
-			printf("nenhum funcionario cadastrado\n\n");
-			menu();
-		}
-		system("cls");
-		imprimir(Funcionario, quantidadefuncionarios);
-		break;
-	case 3:
-		if(quantidadefuncionarios == 0){
+			imprimir(Funcionario, quantidadefuncionarios);
+			RetornarMenu();
+			break;
+		case 3:
+			if(quantidadefuncionarios == 0){
+				system("cls");
+				printf("nenhum funcionario cadastrado\n\n");
+				menu();
+			}
 			system("cls");
-			printf("nenhum funcionario cadastrado\n\n");
-			menu();
-		}
-		system("cls");
-		mudarsalario(Funcionario, quantidadefuncionarios);
-	default:
-		exit(1);
-		break;
+			mudarsalario(Funcionario, quantidadefuncionarios);
+			RetornarMenu();
+		default:
+			exit(1);
+			break;
 	}
 }
 
@@ -94,7 +97,6 @@ void preencher(Dadosfuncionario *Funcionario, int quantidadefuncionarios){
 	scanf("%d", &Funcionario[quantidadefuncionarios].identificador);
 	printf("digite o salario\n");
 	scanf("%f", &Funcionario[quantidadefuncionarios].salario);
-	RetornarMenu();
 }
 
 void mudarsalario(Dadosfuncionario *Funcionario, int quantidadefuncionarios){
@@ -107,7 +109,6 @@ void mudarsalario(Dadosfuncionario *Funcionario, int quantidadefuncionarios){
 	printf("para mudar o salario\n");
 	printf("digite o novo salario do funcionario\n");
 	scanf("%f", &Funcionario[escolhaMudar - 1].salario);
-	RetornarMenu();
 }
 
 void imprimir(Dadosfuncionario *Funcionario, int quantidadefuncionarios){
@@ -119,6 +120,4 @@ void imprimir(Dadosfuncionario *Funcionario, int quantidadefuncionarios){
 		printf("identificacao: %d\n", Funcionario[i].identificador);
 		printf("salario: %f\n", Funcionario[i].salario);
 	}
-	RetornarMenu();
 }
-
