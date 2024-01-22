@@ -126,7 +126,7 @@ void imprimir(Dadosfuncionario *Funcionario, int quantidadefuncionarios){
 		printf("nome: %s\n", Funcionario[i].nome);
 		printf("cargo: %s\n", Funcionario[i].cargo);
 		printf("identificacao: %d\n", Funcionario[i].identificador);
-		printf("salario: R$%f\n", Funcionario[i].salario);
+		printf("salario: R$%f\n\n", Funcionario[i].salario);
 	}
 }
 
