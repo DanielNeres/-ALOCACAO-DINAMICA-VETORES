@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
-typedef struct{
+typedef struct
+{
 	char nome[40];
 	int NumeroDocumento;
 	int idade;
@@ -13,33 +14,39 @@ void imprimir(DadosPessoais *Pessoas, int quantidadePessoas);
 void mudarIdade(DadosPessoais *Pessoas, int quantidadePessoas);
 void MaioreMenorIdade(DadosPessoais *Pessoas, int quantidadePessoas);
 
-int main(){
+int main()
+{
 	menu();
 	return 0;
 }
 
 
-void menu(){
+void menu()
+{
 	int escolhamenu, maxPessoas, quantidadePessoas = 0, Menu = 0;
 	printf("digite a quantidade de Pessoas maxima\n");
 	scanf("%i", &maxPessoas);
-	DadosPessoais * Pessoas = (DadosPessoais*) malloc(sizeof(DadosPessoais)*maxPessoas);
-	if(Pessoas == NULL){
+	DadosPessoais *Pessoas = (DadosPessoais*) malloc(sizeof(DadosPessoais) * maxPessoas);
+	if(Pessoas == NULL)
+	{
 		exit(1);
 	}
 	system("cls");
-	do{
-	printf("MENU\n");
-	printf("1. preencher informacoes pessoais\n");
-	printf("2. imprimir informacoes pessoais\n");
-	printf("3. mudar idade das pessoas\n");
-	printf("4. imprecao do Nome da pessoa mais velha e mais nova\n");
-	printf("escolha o numero de uma das opicoes acima\n");
+	do
+	{
+		printf("MENU\n");
+		printf("1. preencher informacoes pessoais\n");
+		printf("2. imprimir informacoes pessoais\n");
+		printf("3. mudar idade das pessoas\n");
+		printf("4. imprecao do Nome da pessoa mais velha e mais nova\n");
+		printf("escolha o numero de uma das opicoes acima\n");
 
-	scanf("%i", &escolhamenu);
-	switch(escolhamenu){
+		scanf("%i", &escolhamenu);
+		switch(escolhamenu)
+		{
 		case 1:
-			if(quantidadePessoas == maxPessoas){
+			if(quantidadePessoas == maxPessoas)
+			{
 				system("cls");
 				printf("quantidade maxima de funcionarios atingida\n\n");
 				Menu = 1;
@@ -51,7 +58,8 @@ void menu(){
 			Menu = RetornarMenu();
 			break;
 		case 2:
-			if(quantidadePessoas == 0){
+			if(quantidadePessoas == 0)
+			{
 				system("cls");
 				printf("nenhum funcionario cadastrado\n\n");
 				Menu = 1;
@@ -62,7 +70,8 @@ void menu(){
 			Menu = RetornarMenu();
 			break;
 		case 3:
-			if(quantidadePessoas == 0){
+			if(quantidadePessoas == 0)
+			{
 				system("cls");
 				printf("nenhum funcionario cadastrado\n\n");
 				Menu = 1;
@@ -72,8 +81,9 @@ void menu(){
 			mudarIdade(Pessoas, quantidadePessoas);
 			Menu = RetornarMenu();
 			break;
-			case 4:
-			if(quantidadePessoas == 0){
+		case 4:
+			if(quantidadePessoas == 0)
+			{
 				system("cls");
 				printf("nenhum funcionario cadastrado\n\n");
 				Menu = 1;
@@ -87,26 +97,31 @@ void menu(){
 			exit(1);
 			break;
 		}
-		
-	}while(Menu == 1);
+
+	}
+	while(Menu == 1);
 }
 
-int RetornarMenu(){
+int RetornarMenu()
+{
 	char retornoMenu;
 	printf("caso desejar retornar para o menu digite M, ou digite qualquer tecla para sair\n");
 	while (getchar() != '\n');
 	retornoMenu = getchar();
-	if(retornoMenu == 'M' || retornoMenu == 'm'){
+	if(retornoMenu == 'M' || retornoMenu == 'm')
+	{
 		system("cls");
 		return 1;
-	}else
+	}
+	else
 	{
 		system("cls");
 		return 0;
 	}
 }
 
-void preencher(DadosPessoais *Pessoas, int quantidadePessoas){
+void preencher(DadosPessoais *Pessoas, int quantidadePessoas)
+{
 	printf("preencha dados da pessoa %d\n", quantidadePessoas + 1);
 	printf("digite o nome\n");
 	scanf(" %[^\n]", Pessoas[quantidadePessoas].nome);
@@ -116,20 +131,24 @@ void preencher(DadosPessoais *Pessoas, int quantidadePessoas){
 	scanf("%d", &Pessoas[quantidadePessoas].idade);
 }
 
-void imprimir(DadosPessoais *Pessoas, int quantidadePessoas){
+void imprimir(DadosPessoais *Pessoas, int quantidadePessoas)
+{
 	int i;
-	for(i = 0; i < quantidadePessoas; i++){
-    	printf("dados da pessoa %d\n", i + 1);
+	for(i = 0; i < quantidadePessoas; i++)
+	{
+		printf("dados da pessoa %d\n", i + 1);
 		printf("nome: %s\n", Pessoas[i].nome);
 		printf("numero do documento: %d\n", Pessoas[i].NumeroDocumento);
 		printf("salario: R$%d\n\n", Pessoas[i].idade);
 	}
 }
 
-void mudarIdade(DadosPessoais *Pessoas, int quantidadePessoas){
+void mudarIdade(DadosPessoais *Pessoas, int quantidadePessoas)
+{
 	int escolhaMudar, i;
 	printf("escolha a pessoa entre os numeros ");
-	for(i = 1; i <= quantidadePessoas; i++){
+	for(i = 1; i <= quantidadePessoas; i++)
+	{
 		printf("%d ", i);
 	}
 	printf("para mudar a idade\n");
@@ -138,18 +157,23 @@ void mudarIdade(DadosPessoais *Pessoas, int quantidadePessoas){
 	scanf("%d", &Pessoas[escolhaMudar - 1].idade);
 }
 
-void MaioreMenorIdade(DadosPessoais *Pessoas, int quantidadePessoas){
+void MaioreMenorIdade(DadosPessoais *Pessoas, int quantidadePessoas)
+{
 	int i, MaiorIdade = 0, MenorIdade = 0;
-	for(i = 1; i < quantidadePessoas; i++){
-    	if(Pessoas[i].idade < Pessoas[MenorIdade].idade){
+	for(i = 1; i < quantidadePessoas; i++)
+	{
+		if(Pessoas[i].idade < Pessoas[MenorIdade].idade)
+		{
 			MenorIdade = i;
 		}
-		if(Pessoas[i].idade > Pessoas[MaiorIdade].idade){
+		if(Pessoas[i].idade > Pessoas[MaiorIdade].idade)
+		{
 			MaiorIdade = i;
 		}
 	}
 	printf("%s e a pessoa mais nova, com %d de idade;\n", Pessoas[MenorIdade].nome, Pessoas[MenorIdade].idade);
 	printf("%s e a pessoa maisvelha, com %d de idade.\n", Pessoas[MaiorIdade].nome, Pessoas[MaiorIdade].idade);
+}
 }
 #include<stdio.h>
 #include<stdlib.h>
