@@ -2,23 +2,22 @@
 #include<stdlib.h>
 #include<string.h>
 
-typedef union
+typedef enum
 {
-	char ALIMENTO[20];
-	char BEBIDA[20];
-	char ELETRONICO[20];
+ALIMENTO = 1,
+BEBIDA = 2,
+ELETRONICO = 3
 } tipo;
 
 typedef struct
 {
 	char nome[20];
 	float preco;
-	tipo var_tipo;
 } produto;
 
-void preencher(produto *p)
+int preencher(produto *p)
 {
-	// função que preenche os dados de uma variavel tipo pessoa (struct)
+	// funÃ§Ã£o que preenche os dados de uma variavel tipo pessoa (struct)
 	int escolha;
 	printf("Digite o nome: ");
 	scanf(" %[^\n]", p->nome);
@@ -26,16 +25,16 @@ void preencher(produto *p)
 	scanf("%f", &p->preco);
 	printf("digite 1 para ALIMENTO ou 2 para BEBIDA ou 3 para ELETRONICO\n");
 	scanf("%d", &escolha);
-	switch(escolha)
+		switch(escolha)
 	{
 	case 1:
-		strcpy(p->var_tipo.ALIMENTO, "ALIMENTO");
+		return escolha;
 		break;
 	case 2:
-		strcpy(p->var_tipo.BEBIDA, "BEBIDA");
+		return escolha;
 		break;
 	case 3:
-		strcpy(p->var_tipo.ELETRONICO, "ELETRONICO");
+		return escolha;
 		break;
 	default:
 		exit(1);
@@ -43,17 +42,32 @@ void preencher(produto *p)
 	}
 }
 
-void imprimir(produto *p){
+void imprimir(produto *p, int escolha){
 	printf("nome: %s\n", p->nome);
 	printf("preco: %f\n", p->preco);
-	printf("tipo: %s\n", p->var_tipo.ALIMENTO);
+	printf("tipo: ");
+		switch(escolha)
+	{
+	case ALIMENTO:
+		printf("ALIMENTO\n");
+		break;
+	case BEBIDA:
+		printf("BEBIDA\n");
+		break;
+	case ELETRONICO:
+		printf("ELETRONICO\n");
+		break;
+	default:
+		exit(1);
+		break;
+	}
 }
 
 int main()
 {
 	produto *P = malloc(sizeof(produto));
-	preencher(P);
-	imprimir(P);
+	int escolha = preencher(P);
+	imprimir(P, escolha);
 	free(P);
 	return 0;
 }
