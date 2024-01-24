@@ -109,6 +109,7 @@ void menu()
 		}
 
 	} while (Menu == 1);
+	free(i);
 }
 
 int RetornarMenu()
