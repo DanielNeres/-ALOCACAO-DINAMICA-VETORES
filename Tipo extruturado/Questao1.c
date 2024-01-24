@@ -13,7 +13,7 @@ int RetornarMenu();
 void preenche(Ingresso *i, int QuantidadeIngresso);
 void imprime(Ingresso *i, int QuantidadeIngresso);
 void altera_preco(Ingresso *i, float valor, int QuantidadeIngresso);
-void imprime_menor_maior_preco(int n, Ingresso *vet, int QuantidadeIngresso);
+void imprime_menor_maior_preco(int n, Ingresso * i)
 
 int main()
 {
@@ -23,7 +23,8 @@ int main()
 
 void menu()
 {
-	int escolhamenu, MaxIngresso, QuantidadeIngresso = 0, Menu = 0;
+	int escolhamenu, MaxIngresso, QuantidadeIngresso = 0, Menu = 0, j;
+	float valor;
 	printf("digite a quantidade de ingressos maxima\n");
 	scanf("%i", &MaxIngresso);
 	Ingresso *i = (Ingresso *)malloc(sizeof(Ingresso) * MaxIngresso);
@@ -84,10 +85,10 @@ void menu()
 				printf("%d ", j);
 			}
 			printf("para mudar o preco\n");
-			scanf("%d", &valor);
+			scanf("%f", &valor);
 			printf("digite o novo preco do ingresso\n");
-			scanf("%f", &i[valor - 1].preco);
-			altera_preco(i, QuantidadeIngresso);
+			scanf("%f", &valor);
+			altera_preco(i, valor, j);
 			Menu = RetornarMenu();
 			break;
 		case 4:
@@ -151,15 +152,15 @@ int RetornarMenu()
 		}
 	}
 
-	void altera_preco(Ingresso * i, int QuantidadeIngresso)
+	void altera_preco(Ingresso * i, float valor, int j)
 	{
-		int escolhaMudar, i;
+		i[j].preco = valor;
 	}
 
-	void imprime_menor_maior_preco(Ingresso * i, int QuantidadeIngresso)
+	void imprime_menor_maior_preco(int n, Ingresso * i)
 	{
 		int i, Maiorpreco = 0, Menorpreco = 0;
-		for (i = 1; i < QuantidadeIngresso; i++)
+		for (i = 1; i < n; i++)
 		{
 			if (i[i].preco < i[Menorpreco].preco)
 			{
@@ -170,6 +171,6 @@ int RetornarMenu()
 				Maiorpreco = i;
 			}
 		}
-		printf("%s e o atracao que recebe menos, com o preco de R$%f;\n", i[Menorpreco].atracao, i[Menorpreco].preco);
-		printf("%s e o atracao que recebe mais, com o preco de R$%f.\n", i[Maiorpreco].atracao, i[Maiorpreco].preco);
+		printf("%s e a atracao mais barata, com o preco de R$%f;\n", i[Menorpreco].atracao, i[Menorpreco].preco);
+		printf("%s e a atracao mais cara, com o preco de R$%f.\n", i[Maiorpreco].atracao, i[Maiorpreco].preco);
 	}
