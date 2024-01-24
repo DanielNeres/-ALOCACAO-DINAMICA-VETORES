@@ -10,185 +10,166 @@ typedef struct
 
 void menu();
 int RetornarMenu();
-void preenche(Ingresso* i);
-void imprime(Ingresso* i);
-void altera_preco(Ingresso* i, float valor);
-void imprime_menor_maior_preco(int n, Ingresso* vet);
+void preenche(Ingresso *i, int QuantidadeIngresso);
+void imprime(Ingresso *i, int QuantidadeIngresso);
+void altera_preco(Ingresso *i, float valor, int QuantidadeIngresso);
+void imprime_menor_maior_preco(int n, Ingresso *vet, int QuantidadeIngresso);
 
-
-int main(){
+int main()
+{
 	menu();
 	return 0;
 }
 
-
-void menu(){
+void menu()
+{
 	int escolhamenu, MaxIngresso, QuantidadeIngresso = 0, Menu = 0;
-	printf("digite a quantidade de Ingressos maxima\n");
+	printf("digite a quantidade de ingressos maxima\n");
 	scanf("%i", &MaxIngresso);
-	Ingresso * i = (Ingresso*) malloc(sizeof(Ingresso)*MaxIngresso);
-	if(Funcionario == NULL){
+	Ingresso *i = (Ingresso *)malloc(sizeof(Ingresso) * MaxIngresso);
+	if (i == NULL)
+	{
 		exit(1);
 	}
 	system("cls");
-	do{
-	printf("MENU\n");
-	printf("1. preencher informacoes do funcionario\n");
-	printf("2. imprimir informacoes do funcionario\n");
-	printf("3. mudar salario dos funcionarios\n");
-	printf("4. imprecao do cargo com maior e menor salario\n");
-	printf("escolha o numero de uma das opicoes acima\n");
+	do
+	{
+		printf("MENU\n");
+		printf("1. preencher informacoes do ingresso\n");
+		printf("2. imprimir informacoes do ingresso\n");
+		printf("3. mudar preco dos ingressos\n");
+		printf("4. imprecao do Ingresso com maior e menor preco\n");
+		printf("escolha o numero de uma das opicoes acima\n");
 
-	scanf("%i", &escolhamenu);
-	switch(escolhamenu){
+		scanf("%i", &escolhamenu);
+		switch (escolhamenu)
+		{
 		case 1:
-			if(quantidadefuncionarios == maxfuncionarios){
+			if (QuantidadeIngresso == MaxIngresso)
+			{
 				system("cls");
-				printf("quantidade maxima de funcionarios atingida\n\n");
+				printf("quantidade maxima de ingressos atingida\n\n");
 				Menu = 1;
 				break;
 			}
 			system("cls");
-			preencher(Funcionario, quantidadefuncionarios);
-			quantidadefuncionarios++;
+			preenche(i, QuantidadeIngresso);
+			QuantidadeIngresso++;
 			Menu = RetornarMenu();
 			break;
 		case 2:
-			if(quantidadefuncionarios == 0){
+			if (QuantidadeIngresso == 0)
+			{
 				system("cls");
-				printf("nenhum funcionario cadastrado\n\n");
+				printf("nenhum ingresso cadastrado\n\n");
 				Menu = 1;
 				break;
 			}
 			system("cls");
-			imprimir(Funcionario, quantidadefuncionarios);
+			imprime(i, QuantidadeIngresso);
 			Menu = RetornarMenu();
 			break;
 		case 3:
-			if(quantidadefuncionarios == 0){
+			if (QuantidadeIngresso == 0)
+			{
 				system("cls");
-				printf("nenhum funcionario cadastrado\n\n");
+				printf("nenhum ingresso cadastrado\n\n");
 				Menu = 1;
 				break;
 			}
 			system("cls");
-			mudarsalario(Funcionario, quantidadefuncionarios);
+			printf("escolha o ingresso entre os numeros ");
+			for (j = 1; j <= QuantidadeIngresso; j++)
+			{
+				printf("%d ", j);
+			}
+			printf("para mudar o preco\n");
+			scanf("%d", &valor);
+			printf("digite o novo preco do ingresso\n");
+			scanf("%f", &i[valor - 1].preco);
+			altera_preco(i, QuantidadeIngresso);
 			Menu = RetornarMenu();
 			break;
-			case 4:
-			if(quantidadefuncionarios == 0){
+		case 4:
+			if (QuantidadeIngresso == 0)
+			{
 				system("cls");
-				printf("nenhum funcionario cadastrado\n\n");
+				printf("nenhum ingresso cadastrado\n\n");
 				Menu = 1;
 				break;
 			}
 			system("cls");
-			MaioreMenorSalario(Funcionario, quantidadefuncionarios);
+			imprime_menor_maior_preco(i, QuantidadeIngresso);
 			Menu = RetornarMenu();
 			break;
 		default:
 			exit(1);
 			break;
 		}
-		
-	}while(Menu == 1);
+
+	} while (Menu == 1);
 }
 
-int RetornarMenu(){
+int RetornarMenu()
+{
 	char retornoMenu;
 	printf("caso desejar retornar para o menu digite M, ou digite qualquer tecla para sair\n");
-	while (getchar() != '\n');
+	while (getchar() != '\n')
+		;
 	retornoMenu = getchar();
-	if(retornoMenu == 'M' || retornoMenu == 'm'){
+	if (retornoMenu == 'M' || retornoMenu == 'm')
+	{
 		system("cls");
 		return 1;
-	}else
+	}
+	else
 	{
 		system("cls");
 		return 0;
 	}
-}
 
-void preencher(Dadosfuncionario *Funcionario, int quantidadefuncionarios){
-	printf("preencha dados do funcionario %d\n", quantidadefuncionarios + 1);
-	printf("digite o nome\n");
-	scanf(" %[^\n]", Funcionario[quantidadefuncionarios].nome);
-	printf("digite a cargo\n");
-	scanf(" %[^\n]", Funcionario[quantidadefuncionarios].cargo);
-	printf("digite a identificacao\n");
-	scanf("%d", &Funcionario[quantidadefuncionarios].identificador);
-	printf("digite o salario\n");
-	scanf("%f", &Funcionario[quantidadefuncionarios].salario);
-}
-
-void imprimir(Dadosfuncionario *Funcionario, int quantidadefuncionarios){
-	int i;
-	for(i = 0; i < quantidadefuncionarios; i++){
-    	printf("dados do funcionario %d\n", i + 1);
-		printf("nome: %s\n", Funcionario[i].nome);
-		printf("cargo: %s\n", Funcionario[i].cargo);
-		printf("identificacao: %d\n", Funcionario[i].identificador);
-		printf("salario: R$%f\n\n", Funcionario[i].salario);
+	void preenche(Ingresso * i, int QuantidadeIngresso)
+	{
+		printf("preencha dados do ingresso %d\n", QuantidadeIngresso + 1);
+		printf("digite o local\n");
+		scanf(" %[^\n]", i[QuantidadeIngresso].local);
+		printf("digite a atracao\n");
+		scanf(" %[^\n]", i[QuantidadeIngresso].atracao);
+		printf("digite o preco\n");
+		scanf("%f", &i[QuantidadeIngresso].preco);
 	}
-}
 
-void mudarsalario(Dadosfuncionario *Funcionario, int quantidadefuncionarios){
-	int escolhaMudar, i;
-	printf("escolha o funcionario entre os numeros ");
-	for(i = 1; i <= quantidadefuncionarios; i++){
-		printf("%d ", i);
-	}
-	printf("para mudar o salario\n");
-	scanf("%d", &escolhaMudar);
-	printf("digite o novo salario do funcionario\n");
-	scanf("%f", &Funcionario[escolhaMudar - 1].salario);
-}
-
-void MaioreMenorSalario(Dadosfuncionario *Funcionario, int quantidadefuncionarios){
-	int i, MaiorSalario = 0, MenorSalario = 0;
-	for(i = 1; i < quantidadefuncionarios; i++){
-    	if(Funcionario[i].salario < Funcionario[MenorSalario].salario){
-			MenorSalario = i;
-		}
-		if(Funcionario[i].salario > Funcionario[MaiorSalario].salario){
-			MaiorSalario = i;
+	void imprime(Ingresso * i, int QuantidadeIngresso)
+	{
+		int j;
+		for (j = 0; j < QuantidadeIngresso; j++)
+		{
+			printf("dados do ingresso %d\n", i + 1);
+			printf("local: %s\n", i[j].local);
+			printf("atracao: %s\n", i[j].atracao);
+			printf("preco: R$%f\n\n", i[j].preco);
 		}
 	}
-	printf("%s e o cargo que recebe menos, com o salario de R$%f;\n", Funcionario[MenorSalario].cargo, Funcionario[MenorSalario].salario);
-	printf("%s e o cargo que recebe mais, com o salario de R$%f.\n", Funcionario[MaiorSalario].cargo, Funcionario[MaiorSalario].salario);
-}
 
+	void altera_preco(Ingresso * i, int QuantidadeIngresso)
+	{
+		int escolhaMudar, i;
+	}
 
-#include <stdio.h>
-#include <stdlib.h>
-
-typedef struct
-{
-	float preço;
-	char local[30];
-	char atracao[30];
-} Ingresso;
-
-void preenche(Ingresso* i);
-void imprime(Ingresso* i);
-void altera_preco(Ingresso* i, float valor);
-void imprime_menor_maior_preco(int n, Ingresso* vet);
-
-
-int main()
-{
-	int quantidadeIngresso;
-	Ingresso *i = (Ingresso*)malloc(sizeof(Ingresso) * quantidadeIngresso)
-}
-
-void preenche(Ingresso* i){
-	printf("preencha dados do Ingresso %d\n", quantidadefuncionarios + 1);
-	printf("digite o nome\n");
-	scanf(" %[^\n]", Funcionario[quantidadefuncionarios].nome);
-	printf("digite a cargo\n");
-	scanf(" %[^\n]", Funcionario[quantidadefuncionarios].cargo);
-	printf("digite a identificacao\n");
-	scanf("%d", &Funcionario[quantidadefuncionarios].identificador);
-	printf("digite o salario\n");
-	scanf("%f", &Funcionario[quantidadefuncionarios].salario);
-}
+	void imprime_menor_maior_preco(Ingresso * i, int QuantidadeIngresso)
+	{
+		int i, Maiorpreco = 0, Menorpreco = 0;
+		for (i = 1; i < QuantidadeIngresso; i++)
+		{
+			if (i[i].preco < i[Menorpreco].preco)
+			{
+				Menorpreco = i;
+			}
+			if (i[i].preco > i[Maiorpreco].preco)
+			{
+				Maiorpreco = i;
+			}
+		}
+		printf("%s e o atracao que recebe menos, com o preco de R$%f;\n", i[Menorpreco].atracao, i[Menorpreco].preco);
+		printf("%s e o atracao que recebe mais, com o preco de R$%f.\n", i[Maiorpreco].atracao, i[Maiorpreco].preco);
+	}
