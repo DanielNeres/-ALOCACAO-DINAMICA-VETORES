@@ -32,7 +32,7 @@ void imprimir(data *data_var);
 
 int main()
 {
-    data *data_var = malloc(sizeof(data));
+    data *data_var = (data*)malloc(sizeof(data));
     preencher(data_var);
     imprimir(data_var);
     free(data_var);
@@ -43,7 +43,7 @@ void preencher(data *data_var)
 {
     printf("Digite o dia: ");
     scanf("%d", &data_var->dia);
-    printf("digite o mes:\n");
+    printf("digite o mes: ");
     scanf(" %[^\n]", data_var->mes);
     if (strcmp(data_var->mes, "janeiro") == 0) {
         data_var->mes_numero = janeiro;
@@ -73,13 +73,13 @@ void preencher(data *data_var)
         printf("Mes nao reconhecido.\n");
         exit(1);
     }
-    printf("digite o ano:\n");
+    printf("digite o ano:  ");
     scanf("%d", &data_var->ano);
 }
 
 void imprimir(data *data_var)
 {
-    printf("dia: %02d\n", data_var->dia);
-    printf("mes: %02d\n", data_var->mes_numero);
-	printf("ano: %04d", data_var->dia);
+    printf("Data: %02d", data_var->dia);
+    printf("/%02d", data_var->mes_numero);
+	printf("/%04d\n", data_var->ano);
 }
