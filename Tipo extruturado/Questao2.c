@@ -3,17 +3,18 @@
 
 typedef struct
 {
-	float preco;
-	char local[30];
-	char atracao[30];
-} Ingresso;
+	int matrícula;
+	float notas[3], media;
+	char nome[80];
+	char turma;
+} Aluno;
 
 void menu();
 int RetornarMenu();
-void preenche(Ingresso *i, int QuantidadeIngresso);
-void imprime(Ingresso *i, int QuantidadeIngresso);
-void altera_preco(Ingresso *i, float valor, int QuantidadeIngresso);
-void imprime_menor_maior_preco(int n, Ingresso * i);
+void matricula(int n,Aluno** alunos);
+void lanca_notas(int n, Aluno** alunos);
+void imprime_tudo(int n, Aluno** alunos);
+void imprime_turma(int n, Aluno** alunos, char turma);
 
 int main()
 {
@@ -23,12 +24,12 @@ int main()
 
 void menu()
 {
-	int escolhamenu, MaxIngresso, QuantidadeIngresso = 0, Menu = 0, j;
+	int escolhamenu, MaxAluno, QuantidadeAluno = 0, Menu = 0, j;
 	float valor;
-	printf("digite a quantidade de ingressos maxima\n");
-	scanf("%i", &MaxIngresso);
-	Ingresso *i = (Ingresso *)malloc(sizeof(Ingresso) * MaxIngresso);
-	if (i == NULL)
+	printf("digite a quantidade de Alunos maxima\n");
+	scanf("%i", &MaxAluno);
+	Aluno *alunos = (Aluno *)malloc(sizeof(Aluno) * MaxAluno);
+	if (alunos == NULL)
 	{
 		exit(1);
 	}
@@ -36,71 +37,71 @@ void menu()
 	do
 	{
 		printf("MENU\n");
-		printf("1. preencher informacoes do ingresso\n");
-		printf("2. imprimir informacoes do ingresso\n");
-		printf("3. mudar preco dos ingressos\n");
-		printf("4. imprecao do Ingresso com maior e menor preco\n");
+		printf("1. Fazer a matricula do aluno\n");
+		printf("2. imprimir informacoes do aluno\n");
+		printf("3. mudar preco dos alunos\n");
+		printf("4. imprecao do Aluno com maior e menor preco\n");
 		printf("escolha o numero de uma das opicoes acima\n");
 
 		scanf("%i", &escolhamenu);
 		switch (escolhamenu)
 		{
 		case 1:
-			if (QuantidadeIngresso == MaxIngresso)
+			if (QuantidadeAluno == MaxAluno)
 			{
 				system("cls");
-				printf("quantidade maxima de ingressos atingida\n\n");
+				printf("quantidade maxima de Alunos atingida\n\n");
 				Menu = 1;
 				break;
 			}
 			system("cls");
-			preenche(i, QuantidadeIngresso);
-			QuantidadeIngresso++;
+			matricula(QuantidadeAluno, alunos);
+			QuantidadeAluno++;
 			Menu = RetornarMenu();
 			break;
 		case 2:
-			if (QuantidadeIngresso == 0)
+			if (QuantidadeAluno == 0)
 			{
 				system("cls");
-				printf("nenhum ingresso cadastrado\n\n");
+				printf("nenhum Aluno cadastrado\n\n");
 				Menu = 1;
 				break;
 			}
 			system("cls");
-			imprime(i, QuantidadeIngresso);
+			lanca_notas(QuantidadeAluno, alunos);
 			Menu = RetornarMenu();
 			break;
 		case 3:
-			if (QuantidadeIngresso == 0)
+			if (QuantidadeAluno == 0)
 			{
 				system("cls");
-				printf("nenhum ingresso cadastrado\n\n");
+				printf("nenhum Aluno cadastrado\n\n");
 				Menu = 1;
 				break;
 			}
 			system("cls");
-			printf("escolha o ingresso entre os numeros ");
-			for (j = 1; j <= QuantidadeIngresso; j++)
+			printf("escolha o Aluno entre os numeros ");
+			for (j = 1; j <= QuantidadeAluno; j++)
 			{
 				printf("%d ", j);
 			}
 			printf("para mudar o preco\n");
 			scanf("%f", &valor);
-			printf("digite o novo preco do ingresso\n");
+			printf("digite o novo preco do Aluno\n");
 			scanf("%f", &valor);
-			altera_preco(i, valor, j);
+			altera_preco(alunos, valor, j);
 			Menu = RetornarMenu();
 			break;
 		case 4:
-			if (QuantidadeIngresso == 0)
+			if (QuantidadeAluno == 0)
 			{
 				system("cls");
-				printf("nenhum ingresso cadastrado\n\n");
+				printf("nenhum Aluno cadastrado\n\n");
 				Menu = 1;
 				break;
 			}
 			system("cls");
-			imprime_menor_maior_preco(QuantidadeIngresso, i);
+			imprime_menor_maior_preco(QuantidadeAluno, alunos);
 			Menu = RetornarMenu();
 			break;
 		default:
@@ -109,7 +110,7 @@ void menu()
 		}
 
 	} while (Menu == 1);
-	free(i);
+	free(alunos);
 }
 
 int RetornarMenu()
@@ -131,48 +132,48 @@ int RetornarMenu()
 	}
 }
 
-	void preenche(Ingresso * i, int QuantidadeIngresso)
+	void preenche(Aluno * alunos, int QuantidadeAluno)
 	{
-		printf("preencha dados do ingresso %d\n", QuantidadeIngresso + 1);
+		printf("preencha dados do Aluno %d\n", QuantidadeAluno + 1);
 		printf("digite o local\n");
-		scanf(" %[^\n]", i[QuantidadeIngresso].local);
+		scanf(" %[^\n]", alunos[QuantidadeAluno].local);
 		printf("digite a atracao\n");
-		scanf(" %[^\n]", i[QuantidadeIngresso].atracao);
+		scanf(" %[^\n]", alunos[QuantidadeAluno].atracao);
 		printf("digite o preco\n");
-		scanf("%f", &i[QuantidadeIngresso].preco);
+		scanf("%f", &alunos[QuantidadeAluno].preco);
 	}
 
-	void imprime(Ingresso * i, int QuantidadeIngresso)
+	void matricula(int QuantidadeAluno,Aluno** alunos);
 	{
 		int j;
-		for (j = 0; j < QuantidadeIngresso; j++)
+		for (j = 0; j < QuantidadeAluno; j++)
 		{
-			printf("dados do ingresso %d\n", j + 1);
-			printf("local: %s\n", i[j].local);
-			printf("atracao: %s\n", i[j].atracao);
-			printf("preco: R$%f\n\n", i[j].preco);
+			printf("dados do Aluno %d\n", j + 1);
+			printf("local: %s\n", alunos[j].local);
+			printf("atracao: %s\n", alunos[j].atracao);
+			printf("preco: R$%f\n\n", alunos[j].preco);
 		}
 	}
 
-	void altera_preco(Ingresso * i, float valor, int j)
+	void altera_preco(Aluno * alunos, float valor, int j)
 	{
-		i[j].preco = valor;
+		alunos[j].preco = valor;
 	}
 
-	void imprime_menor_maior_preco(int n, Ingresso * i)
+	void imprime_menor_maior_preco(int n, Aluno * alunos)
 	{
 		int j, Maiorpreco = 0, Menorpreco = 0;
 		for (j = 1; j < n; j++)
 		{
-			if (i[j].preco < i[Menorpreco].preco)
+			if (alunos[j].preco < alunos[Menorpreco].preco)
 			{
 				Menorpreco = j;
 			}
-			if (i[j].preco > i[Maiorpreco].preco)
+			if (alunos[j].preco > alunos[Maiorpreco].preco)
 			{
 				Maiorpreco = j;
 			}
 		}
-		printf("%s e a atracao mais barata, com o preco de R$%f;\n", i[Menorpreco].atracao, i[Menorpreco].preco);
-		printf("%s e a atracao mais cara, com o preco de R$%f.\n", i[Maiorpreco].atracao, i[Maiorpreco].preco);
+		printf("%s e a atracao mais barata, com o preco de R$%f;\n", alunos[Menorpreco].atracao, alunos[Menorpreco].preco);
+		printf("%s e a atracao mais cara, com o preco de R$%f.\n", alunos[Maiorpreco].atracao, alunos[Maiorpreco].preco);
 	}
