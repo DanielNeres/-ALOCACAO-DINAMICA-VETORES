@@ -82,4 +82,4 @@ void imprimir(data *data_var)
     printf("Data: %02d", data_var->dia);
     printf("/%02d", data_var->mes_numero);
 	printf("/%04d\n", data_var->ano);
-}
+    }
