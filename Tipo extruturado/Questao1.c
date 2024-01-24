@@ -13,7 +13,7 @@ int RetornarMenu();
 void preenche(Ingresso *i, int QuantidadeIngresso);
 void imprime(Ingresso *i, int QuantidadeIngresso);
 void altera_preco(Ingresso *i, float valor, int QuantidadeIngresso);
-void imprime_menor_maior_preco(int n, Ingresso * i)
+void imprime_menor_maior_preco(int n, Ingresso * i);
 
 int main()
 {
@@ -100,7 +100,7 @@ void menu()
 				break;
 			}
 			system("cls");
-			imprime_menor_maior_preco(i, QuantidadeIngresso);
+			imprime_menor_maior_preco(QuantidadeIngresso, i);
 			Menu = RetornarMenu();
 			break;
 		default:
@@ -128,6 +128,7 @@ int RetornarMenu()
 		system("cls");
 		return 0;
 	}
+}
 
 	void preenche(Ingresso * i, int QuantidadeIngresso)
 	{
@@ -145,7 +146,7 @@ int RetornarMenu()
 		int j;
 		for (j = 0; j < QuantidadeIngresso; j++)
 		{
-			printf("dados do ingresso %d\n", i + 1);
+			printf("dados do ingresso %d\n", j + 1);
 			printf("local: %s\n", i[j].local);
 			printf("atracao: %s\n", i[j].atracao);
 			printf("preco: R$%f\n\n", i[j].preco);
@@ -159,16 +160,16 @@ int RetornarMenu()
 
 	void imprime_menor_maior_preco(int n, Ingresso * i)
 	{
-		int i, Maiorpreco = 0, Menorpreco = 0;
-		for (i = 1; i < n; i++)
+		int j, Maiorpreco = 0, Menorpreco = 0;
+		for (j = 1; j < n; j++)
 		{
-			if (i[i].preco < i[Menorpreco].preco)
+			if (i[j].preco < i[Menorpreco].preco)
 			{
-				Menorpreco = i;
+				Menorpreco = j;
 			}
-			if (i[i].preco > i[Maiorpreco].preco)
+			if (i[j].preco > i[Maiorpreco].preco)
 			{
-				Maiorpreco = i;
+				Maiorpreco = j;
 			}
 		}
 		printf("%s e a atracao mais barata, com o preco de R$%f;\n", i[Menorpreco].atracao, i[Menorpreco].preco);
