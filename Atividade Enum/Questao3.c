@@ -21,7 +21,8 @@ typedef enum
 typedef struct
 {
     int dia;
-    int mes;
+    char mes[20];
+    int mes_numero;
     int ano;
 
 } data;
@@ -40,61 +41,45 @@ int main()
 
 void preencher(data *data_var)
 {
-    int escolha;
     printf("Digite o dia: ");
     scanf("%d", &data_var->dia);
     printf("digite o mes:\n");
-    scanf("%d", data_var->mes);
+    scanf(" %[^\n]", data_var->mes);
+    if (strcmp(data_var->mes, "janeiro") == 0) {
+        data_var->mes_numero = janeiro;
+    } else if (strcmp(data_var->mes, "fevereiro") == 0) {
+        data_var->mes_numero = fevereiro;
+    } else if (strcmp(data_var->mes, "marco") == 0) {
+        data_var->mes_numero = marco;
+    } else if (strcmp(data_var->mes, "abril") == 0) {
+        data_var->mes_numero = abril;
+    } else if (strcmp(data_var->mes, "maio") == 0) {
+        data_var->mes_numero = maio;
+    } else if (strcmp(data_var->mes, "junho") == 0) {
+        data_var->mes_numero = junho;
+    } else if (strcmp(data_var->mes, "julho") == 0) {
+        data_var->mes_numero = julho;
+    } else if (strcmp(data_var->mes, "agosto") == 0) {
+        data_var->mes_numero = agosto;
+    } else if (strcmp(data_var->mes, "setembro") == 0) {
+        data_var->mes_numero = setembro;
+    } else if (strcmp(data_var->mes, "outubro") == 0) {
+        data_var->mes_numero = outubro;
+    } else if (strcmp(data_var->mes, "novembro") == 0) {
+        data_var->mes_numero = novembro;
+    } else if (strcmp(data_var->mes, "dezembro") == 0) {
+        data_var->mes_numero = dezembro;
+    } else {
+        printf("Mes nao reconhecido.\n");
+        exit(1);
+    }
     printf("digite o ano:\n");
-    scanf("%d", &data_var->mes);
+    scanf("%d", &data_var->ano);
 }
 
 void imprimir(data *data_var)
 {
     printf("dia: %02d\n", data_var->dia);
-    printf("mes: %02d\n", data_var->mes);
-    switch (data_var->dia)
-    {
-    case janeiro:
-        printf("01\n");
-        break;
-    case fevereiro:
-        printf("02\n");
-        break;
-    case marco:
-        printf("03\n");
-        break;
-    case abril:
-        printf("04\n");
-        break;
-    case maio:
-        printf("05\n");
-        break;
-    case junho:
-        printf("06\n");
-        break;
-    case julho:
-        printf("07\n");
-        break;
-    case agosto:
-        printf("08\n");
-        break;
-    case setembro:
-        printf("09\n");
-        break;
-    case outubro:
-        printf("10\n");
-        break;
-    case novembro:
-        printf("11\n");
-        break;
-    case dezembro:
-        printf("12\n");
-        break;
-    default:
-        exit(1);
-        break;
-    }
-     printf("ano: %04d", data_var->dia);
+    printf("mes: %02d\n", data_var->mes_numero);
+	printf("ano: %04d", data_var->dia);
 }
-
