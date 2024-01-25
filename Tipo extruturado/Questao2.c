@@ -3,7 +3,7 @@
 
 typedef struct
 {
-	int matrícula;
+	int matricula;
 	float notas[3], media;
 	char nome[80];
 	char turma;
@@ -25,10 +25,10 @@ int main()
 void menu()
 {
 	int escolhamenu, MaxAluno, QuantidadeAluno = 0, Menu = 0, j;
-	char escolhaturma;
+	char turma;
 	printf("digite a quantidade de Alunos maxima\n");
 	scanf("%i", &MaxAluno);
-	Aluno *alunos = (Aluno *)malloc(sizeof(Aluno) * MaxAluno);
+	Aluno **alunos = (Aluno **)malloc(sizeof(Aluno *) * MaxAluno);
 	if (alunos == NULL)
 	{
 		exit(1);
@@ -149,12 +149,13 @@ int RetornarMenu()
 
 	void imprime_tudo(int QuantidadeAluno, Aluno** alunos);
 	{
-	int j;
-	for (j = 0; j < QuantidadeIngresso; j++)
+	int j, i;
+	for (j = 0; j < QuantidadeAluno; j++)
 		{
 			printf("dados do aluno %d\n", j + 1);
 			printf("nome: %s\n", alunos[j].nome);
 			printf("matricula: %d\n", alunos[j].matricula);
+			printf("turma: %c\n", alunos[j].turma);
 			printf("notas: ");
 			for (i = 0; i < 3; i++){
 				printf("%f ", alunos[j].notas[i]);
@@ -166,12 +167,13 @@ int RetornarMenu()
 	void imprime_turma(int QuantidadeAluno, Aluno** alunos, char turma);
 	{
 	int j;
-	for (j = 0; j < QuantidadeIngresso; j++)
+	for (j = 0; j < QuantidadeAluno; j++)
 		{
 			if(alunos[j].turma == turma){
 			printf("dados do aluno %d\n", j + 1);
 			printf("nome: %s\n", alunos[j].nome);
 			printf("matricula: %d\n", alunos[j].matricula);
+			printf("turma: %c\n", alunos[j].turma);
 			printf("notas: ");
 			for (i = 0; i < 3; i++){
 				printf("%f ", alunos[j].notas[i]);
