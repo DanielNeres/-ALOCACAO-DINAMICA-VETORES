@@ -11,10 +11,10 @@ typedef struct
 
 void menu();
 int RetornarMenu();
-void matricula(int n,Aluno** alunos);
-void lanca_notas(int n, Aluno** alunos);
-void imprime_tudo(int n, Aluno** alunos);
-void imprime_turma(int n, Aluno** alunos, char turma);
+void matricula(int QuantidadeAluno, Aluno** alunos);
+void lanca_notas(int QuantidadeAluno, Aluno** alunos);
+void imprime_tudo(int QuantidadeAluno, Aluno** alunos);
+void imprime_turma(int QuantidadeAluno, Aluno** alunos, char turma);
 
 int main()
 {
@@ -25,7 +25,7 @@ int main()
 void menu()
 {
 	int escolhamenu, MaxAluno, QuantidadeAluno = 0, Menu = 0, j;
-	float valor;
+	char escolhaturma;
 	printf("digite a quantidade de Alunos maxima\n");
 	scanf("%i", &MaxAluno);
 	Aluno *alunos = (Aluno *)malloc(sizeof(Aluno) * MaxAluno);
@@ -38,9 +38,9 @@ void menu()
 	{
 		printf("MENU\n");
 		printf("1. Fazer a matricula do aluno\n");
-		printf("2. imprimir informacoes do aluno\n");
-		printf("3. mudar preco dos alunos\n");
-		printf("4. imprecao do Aluno com maior e menor preco\n");
+		printf("2. Cadastrar as notas  dos alunos\n");
+		printf("3. imprimir dados dos alunos\n");
+		printf("4. imprimir dados de uma turma\n");
 		printf("escolha o numero de uma das opicoes acima\n");
 
 		scanf("%i", &escolhamenu);
@@ -80,16 +80,7 @@ void menu()
 				break;
 			}
 			system("cls");
-			printf("escolha o Aluno entre os numeros ");
-			for (j = 1; j <= QuantidadeAluno; j++)
-			{
-				printf("%d ", j);
-			}
-			printf("para mudar o preco\n");
-			scanf("%f", &valor);
-			printf("digite o novo preco do Aluno\n");
-			scanf("%f", &valor);
-			altera_preco(alunos, valor, j);
+			imprime_tudo(QuantidadeAluno, alunos);
 			Menu = RetornarMenu();
 			break;
 		case 4:
@@ -101,7 +92,7 @@ void menu()
 				break;
 			}
 			system("cls");
-			imprime_menor_maior_preco(QuantidadeAluno, alunos);
+			void imprime_turma(int QuantidadeAluno, Aluno** alunos, char turma);
 			Menu = RetornarMenu();
 			break;
 		default:
@@ -132,48 +123,60 @@ int RetornarMenu()
 	}
 }
 
-	void preenche(Aluno * alunos, int QuantidadeAluno)
+	void matricula(int QuantidadeAluno, Aluno** alunos);
 	{
 		printf("preencha dados do Aluno %d\n", QuantidadeAluno + 1);
-		printf("digite o local\n");
-		scanf(" %[^\n]", alunos[QuantidadeAluno].local);
-		printf("digite a atracao\n");
-		scanf(" %[^\n]", alunos[QuantidadeAluno].atracao);
-		printf("digite o preco\n");
-		scanf("%f", &alunos[QuantidadeAluno].preco);
+		printf("digite o nome\n");
+		scanf(" %[^\n]", alunos[QuantidadeAluno].nome);
+		printf("digite a matricula\n");
+		scanf("%d", &alunos[QuantidadeAluno].matricula);
+		printf("digite a turma\n");
+		scanf("%c", &alunos[QuantidadeAluno].turma);
 	}
 
-	void matricula(int QuantidadeAluno,Aluno** alunos);
+	void lanca_notas(int QuantidadeAluno, Aluno** alunos);
 	{
-		int j;
+		int j, i;
 		for (j = 0; j < QuantidadeAluno; j++)
 		{
-			printf("dados do Aluno %d\n", j + 1);
-			printf("local: %s\n", alunos[j].local);
-			printf("atracao: %s\n", alunos[j].atracao);
-			printf("preco: R$%f\n\n", alunos[j].preco);
+			printf("digite as notas do Aluno %d\n", j + 1);
+			for (i = 0; i < 3; i++){
+				scanf("%f", &alunos[QuantidadeAluno].notas[i]);
+			}
+			alunos[QuantidadeAluno].media = (alunos[QuantidadeAluno].notas[0] + alunos[QuantidadeAluno].notas[1] + alunos[QuantidadeAluno].notas[2])/3;
 		}
 	}
 
-	void altera_preco(Aluno * alunos, float valor, int j)
+	void imprime_tudo(int QuantidadeAluno, Aluno** alunos);
 	{
-		alunos[j].preco = valor;
-	}
-
-	void imprime_menor_maior_preco(int n, Aluno * alunos)
-	{
-		int j, Maiorpreco = 0, Menorpreco = 0;
-		for (j = 1; j < n; j++)
+	int j;
+	for (j = 0; j < QuantidadeIngresso; j++)
 		{
-			if (alunos[j].preco < alunos[Menorpreco].preco)
-			{
-				Menorpreco = j;
+			printf("dados do aluno %d\n", j + 1);
+			printf("nome: %s\n", alunos[j].nome);
+			printf("matricula: %d\n", alunos[j].matricula);
+			printf("notas: ");
+			for (i = 0; i < 3; i++){
+				printf("%f ", alunos[j].notas[i]);
 			}
-			if (alunos[j].preco > alunos[Maiorpreco].preco)
-			{
-				Maiorpreco = j;
+			printf("\nmedia: %f", alunos[j].media);
+		}
+	}
+
+	void imprime_turma(int QuantidadeAluno, Aluno** alunos, char turma);
+	{
+	int j;
+	for (j = 0; j < QuantidadeIngresso; j++)
+		{
+			if(alunos[j].turma == turma){
+			printf("dados do aluno %d\n", j + 1);
+			printf("nome: %s\n", alunos[j].nome);
+			printf("matricula: %d\n", alunos[j].matricula);
+			printf("notas: ");
+			for (i = 0; i < 3; i++){
+				printf("%f ", alunos[j].notas[i]);
+			}
+			printf("\nmedia: %f", alunos[j].media);
 			}
 		}
-		printf("%s e a atracao mais barata, com o preco de R$%f;\n", alunos[Menorpreco].atracao, alunos[Menorpreco].preco);
-		printf("%s e a atracao mais cara, com o preco de R$%f.\n", alunos[Maiorpreco].atracao, alunos[Maiorpreco].preco);
 	}
