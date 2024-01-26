@@ -15,6 +15,7 @@ void matricula(int QuantidadeAluno, Aluno *alunos);
 void lanca_notas(int QuantidadeAluno, Aluno *alunos);
 void imprime_tudo(int QuantidadeAluno, Aluno *alunos);
 void imprime_turma(int QuantidadeAluno, Aluno *alunos, char turma);
+void imprime_turma_aprovados(int QuantidadeAluno, Aluno *alunos, char turma);
 
 int main()
 {
@@ -97,6 +98,20 @@ void menu()
 			imprime_turma(QuantidadeAluno, alunos, turma);
 			Menu = RetornarMenu();
 			break;
+		case 5:
+			if (QuantidadeAluno == 0)
+			{
+				system("cls");
+				printf("Nenhum Aluno cadastrado\n\n");
+				Menu = 1;
+				break;
+			}
+			system("cls");
+			printf("Digite a turma:\n");
+			scanf(" %c", &turma);
+			imprime_turma_aprovados(QuantidadeAluno, alunos, turma);
+			Menu = RetornarMenu();
+			break;
 		default:
 			exit(1);
 			break;
@@ -170,7 +185,7 @@ void imprime_turma(int QuantidadeAluno, Aluno *alunos, char turma)
 {
 	int i, j;
 	for (j = 0; j < QuantidadeAluno; j++)
-	{
+''	{
 		if (alunos[j].turma == turma)
 		{
 			printf("Dados do aluno %d\n", j + 1);
@@ -182,6 +197,18 @@ void imprime_turma(int QuantidadeAluno, Aluno *alunos, char turma)
 				printf("%f ", alunos[j].notas[i]);
 			}
 			printf("\nMedia: %f\n\n2e", alunos[j].media);
+		}
+	}
+}
+
+void imprime_turma_aprovados(int QuantidadeAluno, Aluno *alunos, char turma)
+{
+	int j;
+	for (j = 0; j < QuantidadeAluno; j++)
+	{
+		if (alunos[j].turma == turma)
+		{
+			printf("o aluno %s com media igual %f", alunos[j].nome, alunos[j].media);
 		}
 	}
 }
