@@ -24,30 +24,38 @@ int main()
 	return 0;
 }
 
-void declaracaodealunos(){
-	int MaxAluno;
+void declaracaodealunos()
+{
+	int MaxAluno, i, j;
 	printf("Digite a quantidade de Alunos maxima\n");
 	scanf("%i", &MaxAluno);
+
 	Aluno *alunos_declaracao = (Aluno *)malloc(sizeof(Aluno) * MaxAluno);
 	if (alunos_declaracao == NULL)
 	{
 		exit(1);
 	}
+
+	for (i = 0; i < MaxAluno; i++)
+	{
+		alunos_declaracao[i].matricula = 0;
+		alunos_declaracao[i].media = 0.0;
+		for(j = 0; j < 3; j++)
+		{
+			alunos_declaracao[i].notas[j] = 0.0;
+		}
+	}
+
 	system("cls");
 	menu(alunos_declaracao, MaxAluno);
 }
 
-void menu(Aluno *alunos_declaracao, int MaxAluno){
-	int escolhamenu, QuantidadeAluno = 0, Menu = 0, i, j;
+
+void menu(Aluno *alunos_declaracao, int MaxAluno)
+{
+	int escolhamenu, QuantidadeAluno = 0, Menu = 0;
 	char turma;
 	Aluno **alunos = &alunos_declaracao;
-	for (i = 0; i < MaxAluno; i++) {
-        alunos[i]->matricula = 0;
-        alunos[i]->media = 0.0;
-        for (j = 0; j < 3; j++){
-			alunos[i]->notas[j] = 0.0;
-		} 
-    }
 	do
 	{
 		printf("MENU\n");
@@ -154,6 +162,7 @@ int RetornarMenu()
 
 void matricula(int QuantidadeAluno, Aluno **alunos)
 {
+	int i;
 	alunos[QuantidadeAluno] = (Aluno *)malloc(sizeof(Aluno));
 	printf("Preencha dados do Aluno %d\n", QuantidadeAluno + 1);
 	printf("Digite o nome\n");
@@ -162,6 +171,11 @@ void matricula(int QuantidadeAluno, Aluno **alunos)
 	scanf("%d", &alunos[QuantidadeAluno]->matricula);
 	printf("Digite a turma\n");
 	scanf(" %c", &alunos[QuantidadeAluno]->turma);
+	alunos[QuantidadeAluno]->media = 0.0;
+	for (i = 0; i < 3; i++)
+	{
+		alunos[QuantidadeAluno]->notas[i] = 0.0;
+	}
 }
 
 void lanca_notas(int QuantidadeAluno, Aluno **alunos)
