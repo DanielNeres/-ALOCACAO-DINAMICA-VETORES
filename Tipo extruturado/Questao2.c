@@ -25,7 +25,7 @@ int main()
 }
 
 void declaracaodealunos(){
-	int MaxAluno;
+	int MaxAluno, i;
 	printf("Digite a quantidade de Alunos maxima\n");
 	scanf("%i", &MaxAluno);
 	Aluno *alunos_declaracao = (Aluno *)malloc(sizeof(Aluno) * MaxAluno);
@@ -34,6 +34,21 @@ void declaracaodealunos(){
 		exit(1);
 	}
 	system("cls");
+	for(i = 0; i < MaxAluno; i++){
+		alunos_declaracao[i].matricula == NULL;
+	}
+	for(i = 0; i < MaxAluno; i++){
+		alunos_declaracao[i].notas == NULL;
+	}
+	for(i = 0; i < MaxAluno; i++){
+		alunos_declaracao[i].media == NULL;
+	}
+	for(i = 0; i < MaxAluno; i++){
+		alunos_declaracao[i].nome == NULL;
+	}
+	for(i = 0; i < MaxAluno; i++){
+		alunos_declaracao[i].turma == NULL;
+	}
 	menu(alunos_declaracao, MaxAluno);
 }
 
