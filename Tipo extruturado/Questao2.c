@@ -185,7 +185,7 @@ void imprime_turma(int QuantidadeAluno, Aluno *alunos, char turma)
 {
 	int i, j;
 	for (j = 0; j < QuantidadeAluno; j++)
-''	{
+	{
 		if (alunos[j].turma == turma)
 		{
 			printf("Dados do aluno %d\n", j + 1);
