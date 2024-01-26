@@ -9,32 +9,38 @@ typedef struct
 	char turma;
 } Aluno;
 
-void menu();
+void declaracaodealunos();
+void menu(Aluno *alunos_declaracao, int MaxAluno);
 int RetornarMenu();
-void matricula(int QuantidadeAluno, Aluno *alunos);
-void lanca_notas(int QuantidadeAluno, Aluno *alunos);
-void imprime_tudo(int QuantidadeAluno, Aluno *alunos);
-void imprime_turma(int QuantidadeAluno, Aluno *alunos, char turma);
-void imprime_turma_aprovados(int QuantidadeAluno, Aluno *alunos, char turma);
+void matricula(int QuantidadeAluno, Aluno **alunos);
+void lanca_notas(int QuantidadeAluno, Aluno **alunos);
+void imprime_tudo(int QuantidadeAluno, Aluno **alunos);
+void imprime_turma(int QuantidadeAluno, Aluno **alunos, char turma);
+void imprime_turma_aprovados(int QuantidadeAluno, Aluno **alunos, char turma);
 
 int main()
 {
-	menu();
+	declaracaodealunos();
 	return 0;
 }
 
-void menu()
-{
-	int escolhamenu, MaxAluno, QuantidadeAluno = 0, Menu = 0;
-	char turma;
+void declaracaodealunos(){
+	int MaxAluno;
 	printf("Digite a quantidade de Alunos maxima\n");
 	scanf("%i", &MaxAluno);
-	Aluno *alunos = (Aluno *)malloc(sizeof(Aluno) * MaxAluno);
-	if (alunos == NULL)
+	Aluno *alunos_declaracao = (Aluno *)malloc(sizeof(Aluno) * MaxAluno);
+	if (alunos_declaracao == NULL)
 	{
 		exit(1);
 	}
 	system("cls");
+	menu(alunos_declaracao, MaxAluno);
+}
+
+void menu(Aluno *alunos_declaracao, int MaxAluno){
+	int escolhamenu, QuantidadeAluno = 0, Menu = 0;
+	char turma;
+	Aluno **alunos = &alunos_declaracao;
 	do
 	{
 		printf("MENU\n");
@@ -139,18 +145,19 @@ int RetornarMenu()
 	}
 }
 
-void matricula(int QuantidadeAluno, Aluno *alunos)
+void matricula(int QuantidadeAluno, Aluno **alunos)
 {
+	alunos[QuantidadeAluno] = (Aluno *)malloc(sizeof(Aluno));
 	printf("Preencha dados do Aluno %d\n", QuantidadeAluno + 1);
 	printf("Digite o nome\n");
-	scanf(" %s", alunos[QuantidadeAluno].nome);
+	scanf(" %s", alunos[QuantidadeAluno]->nome);
 	printf("Digite a matricula\n");
-	scanf("%d", &alunos[QuantidadeAluno].matricula);
+	scanf("%d", &alunos[QuantidadeAluno]->matricula);
 	printf("Digite a turma\n");
-	scanf(" %c", &alunos[QuantidadeAluno].turma);
+	scanf(" %c", &alunos[QuantidadeAluno]->turma);
 }
 
-void lanca_notas(int QuantidadeAluno, Aluno *alunos)
+void lanca_notas(int QuantidadeAluno, Aluno **alunos)
 {
 	int j, i;
 	for (j = 0; j < QuantidadeAluno; j++)
@@ -158,57 +165,57 @@ void lanca_notas(int QuantidadeAluno, Aluno *alunos)
 		printf("Digite as notas do Aluno %d\n", j + 1);
 		for (i = 0; i < 3; i++)
 		{
-			scanf("%f", &alunos[j].notas[i]);
+			scanf("%f", &alunos[j]->notas[i]);
 		}
-		alunos[j].media = (alunos[j].notas[0] + alunos[j].notas[1] + alunos[j].notas[2]) / 3;
+		alunos[j]->media = (alunos[j]->notas[0] + alunos[j]->notas[1] + alunos[j]->notas[2]) / 3;
 	}
 }
 
-void imprime_tudo(int QuantidadeAluno, Aluno *alunos)
+void imprime_tudo(int QuantidadeAluno, Aluno **alunos)
 {
 	int i, j;
 	for (j = 0; j < QuantidadeAluno; j++)
 	{
 		printf("Dados do aluno %d\n", j + 1);
-		printf("Nome: %s\n", alunos[j].nome);
-		printf("Matricula: %d\n", alunos[j].matricula);
+		printf("Nome: %s\n", alunos[j]->nome);
+		printf("Matricula: %d\n", alunos[j]->matricula);
 		printf("Notas: ");
 		for (i = 0; i < 3; i++)
 		{
-			printf("%f ", alunos[j].notas[i]);
+			printf("%f ", alunos[j]->notas[i]);
 		}
-		printf("\nMedia: %f\n\n", alunos[j].media);
+		printf("\nMedia: %f\n\n", alunos[j]->media);
 	}
 }
 
-void imprime_turma(int QuantidadeAluno, Aluno *alunos, char turma)
+void imprime_turma(int QuantidadeAluno, Aluno **alunos, char turma)
 {
 	int i, j;
 	for (j = 0; j < QuantidadeAluno; j++)
 	{
-		if (alunos[j].turma == turma)
+		if (alunos[j]->turma == turma)
 		{
 			printf("Dados do aluno %d\n", j + 1);
-			printf("Nome: %s\n", alunos[j].nome);
-			printf("Matricula: %d\n", alunos[j].matricula);
+			printf("Nome: %s\n", alunos[j]->nome);
+			printf("Matricula: %d\n", alunos[j]->matricula);
 			printf("Notas: ");
 			for (i = 0; i < 3; i++)
 			{
-				printf("%f ", alunos[j].notas[i]);
+				printf("%f ", alunos[j]->notas[i]);
 			}
-			printf("\nMedia: %f\n\n2e", alunos[j].media);
+			printf("\nMedia: %f\n\n2e", alunos[j]->media);
 		}
 	}
 }
 
-void imprime_turma_aprovados(int QuantidadeAluno, Aluno *alunos, char turma)
+void imprime_turma_aprovados(int QuantidadeAluno, Aluno **alunos, char turma)
 {
 	int j;
 	for (j = 0; j < QuantidadeAluno; j++)
 	{
-		if (alunos[j].turma == turma)
+		if (alunos[j]->turma == turma)
 		{
-			printf("o aluno %s com media igual %f", alunos[j].nome, alunos[j].media);
+			printf("o aluno %s foi aprovado, com media igual %f", alunos[j]->nome, alunos[j]->media);
 		}
 	}
 }
