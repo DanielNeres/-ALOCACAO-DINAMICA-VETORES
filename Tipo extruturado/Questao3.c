@@ -29,20 +29,43 @@ int main(){
 	scanf("%f", &c->raio);
 	printf("digite a altura do retangulo\n");
 	scanf("%f", &h);
+	if(h > c->raio){
+		printf("altura inconpativel\n");
+		exit(1);
+	}
 	Ret *retangulo_circunscrito = ret_circunscrito(c, h);
-	printf("Base = %f; Altura = %f.", retangulo_circunscrito->base, retangulo_circunscrito->altura);
+	printf("Base = %f; Altura = %f.\n\n", retangulo_circunscrito->base, retangulo_circunscrito->altura);
+	
+	printf("digite a base do retangulo\n");
+	scanf("%f", &r->base);
+	printf("digite a altura do retangulo\n");
+	scanf("%f", &r->altura);
+	Circ = circulo_interno = circ_interno(r);
+	
+	free(r);
+	free(c);
+	return 0;
 }
 
 Ret *ret_circunscrito(Circ *c, float h){
 	Ret *retangulo_circunscrito_var = (Ret*)malloc(sizeof(Ret));
     if (retangulo_circunscrito_var == NULL) {
-        printf("Erro na alocação de memória!\n");
+        printf("Erro!\n");
         exit(1);
     }
 
     retangulo_circunscrito_var->altura = h;
     retangulo_circunscrito_var->base =  2 * sqrt(pow(c->raio, 2) - pow(h/2, 2));
+	return retangulo_circunscrito_var;
+}
 
+Circ *circ_interno(Ret *r);{
+	Circ *retangulo_circunscrito_var = (Ret*)malloc(sizeof(Ret));
+    if (retangulo_circunscrito_var == NULL) {
+        printf("Erro!\n");
+        exit(1);
+    }
+}
 }
 #include <stdio.h>
 #include <math.h>
