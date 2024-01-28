@@ -200,12 +200,13 @@ void imprime_tudo(int QuantidadeAluno, Aluno **alunos)
 		printf("Dados do aluno %d\n", j + 1);
 		printf("Nome: %s\n", alunos[j]->nome);
 		printf("Matricula: %d\n", alunos[j]->matricula);
-		printf("Notas: ");
+		printf("turma: %c\n", alunos[j]->turma);
+		printf("Notas: |");
 		for (i = 0; i < 3; i++)
 		{
-			printf("%f ", alunos[j]->notas[i]);
+			printf("%.03f |", alunos[j]->notas[i]);
 		}
-		printf("\nMedia: %f\n\n", alunos[j]->media);
+		printf("\nMedia: %.03f\n\n", alunos[j]->media);
 	}
 }
 
@@ -219,12 +220,13 @@ void imprime_turma(int QuantidadeAluno, Aluno **alunos, char turma)
 			printf("Dados do aluno %d\n", j + 1);
 			printf("Nome: %s\n", alunos[j]->nome);
 			printf("Matricula: %d\n", alunos[j]->matricula);
-			printf("Notas: ");
+			printf("turma: %c\n", alunos[j]->turma);
+			printf("Notas: |");
 			for (i = 0; i < 3; i++)
 			{
-				printf("%f ", alunos[j]->notas[i]);
+				printf("%.03f |", alunos[j]->notas[i]);
 			}
-			printf("\nMedia: %f\n\n", alunos[j]->media);
+			printf("\nMedia: %.03f\n\n", alunos[j]->media);
 		}
 	}
 }
@@ -236,7 +238,7 @@ void imprime_turma_aprovados(int QuantidadeAluno, Aluno **alunos, char turma)
 	{
 		if (alunos[j]->turma == turma && (alunos[j]->media > 7))
 		{
-			printf("o aluno %s foi aprovado, com media igual %f\n", alunos[j]->nome, alunos[j]->media);
+			printf("o aluno %s foi aprovado, com media igual %f30\n", alunos[j]->nome, alunos[j]->media);
 		}
 	}
 }
