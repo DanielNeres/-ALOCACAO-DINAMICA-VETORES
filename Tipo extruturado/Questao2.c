@@ -138,7 +138,6 @@ void menu(Aluno *alunos_declaracao, int MaxAluno)
 			exit(1);
 			break;
 		}
-
 	}
 	while (Menu == 1);
 	free(alunos);
@@ -235,9 +234,9 @@ void imprime_turma_aprovados(int QuantidadeAluno, Aluno **alunos, char turma)
 	int j;
 	for (j = 0; j < QuantidadeAluno; j++)
 	{
-		if (alunos[j]->turma == turma)
+		if (alunos[j]->turma == turma && (alunos[j] > 7))
 		{
-			printf("o aluno %s foi aprovado, com media igual %f", alunos[j]->nome, alunos[j]->media);
+			printf("o aluno %s foi aprovado, com media igual %f\n", alunos[j]->nome, alunos[j]->media);
 		}
 	}
 }
