@@ -234,7 +234,7 @@ void imprime_turma_aprovados(int QuantidadeAluno, Aluno **alunos, char turma)
 	int j;
 	for (j = 0; j < QuantidadeAluno; j++)
 	{
-		if (alunos[j]->turma == turma && (alunos[j] > 7))
+		if (alunos[j]->turma == turma && (alunos[j]->media > 7))
 		{
 			printf("o aluno %s foi aprovado, com media igual %f\n", alunos[j]->nome, alunos[j]->media);
 		}
