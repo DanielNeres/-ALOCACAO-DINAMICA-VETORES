@@ -16,7 +16,7 @@ typedef struct
 
 int preencher(pessoa *p)
 {
-	// função que preenche os dados de uma variavel tipo pessoa (struct)
+	// funÃ§Ã£o que preenche os dados de uma variavel tipo pessoa (struct)
 	int escolha;
 	printf("Digite o nome: ");
 	scanf(" %[^\n]", p->nome);
@@ -73,7 +73,7 @@ typedef struct
 
 void preencher(pessoa *p)
 {
-	// fun��o que preenche os dados de uma vari�vel tipo pessoa (struct)
+	// função que preenche os dados de uma variável tipo pessoa (struct)
 	int escolha;
 	printf("Digite o nome: ");
 	scanf(" %[^\n]", p->nome);
