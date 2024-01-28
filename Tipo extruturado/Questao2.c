@@ -63,6 +63,7 @@ void menu(Aluno *alunos_declaracao, int MaxAluno)
 		printf("2. Cadastrar as notas dos alunos\n");
 		printf("3. Imprimir dados dos alunos\n");
 		printf("4. Imprimir dados de uma turma\n");
+		printf("5. Imprimir alunos aprovados de uma turma\n");
 		printf("Escolha o numero de uma das opcoes acima\n");
 
 		scanf("%d", &escolhamenu);
