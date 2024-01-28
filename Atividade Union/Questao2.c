@@ -1,12 +1,14 @@
+/*1. Escreva um programa que implementa uma struct Pessoa com os campos nome, idade e gˆenero. O
+gˆenero deve ser armazenado como um enum com os valores MASCULINO e FEMININO. O programa
+deve ler os dados de uma pessoa e imprimir os dados da pessoa.*/
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
 
 typedef union
 {
-	char ALIMENTO[20];
-	char BEBIDA[20];
-	char ELETRONICO[20];
+	char Tipo[20];
 } tipo;
 
 typedef struct
@@ -29,13 +31,13 @@ void preencher(produto *p)
 	switch(escolha)
 	{
 	case 1:
-		strcpy(p->var_tipo.ALIMENTO, "ALIMENTO");
+		strcpy(p->var_tipo.Tipo, "ALIMENTO");
 		break;
 	case 2:
-		strcpy(p->var_tipo.BEBIDA, "BEBIDA");
+		strcpy(p->var_tipo.Tipo, "BEBIDA");
 		break;
 	case 3:
-		strcpy(p->var_tipo.ELETRONICO, "ELETRONICO");
+		strcpy(p->var_tipo.Tipo, "ELETRONICO");
 		break;
 	default:
 		exit(1);
@@ -45,8 +47,8 @@ void preencher(produto *p)
 
 void imprimir(produto *p){
 	printf("nome: %s\n", p->nome);
-	printf("preco: %f\n", p->preco);
-	printf("tipo: %s\n", p->var_tipo.ALIMENTO);
+	printf("preco: %.2f\n", p->preco);
+	printf("tipo: %s\n", p->var_tipo.Tipo);
 }
 
 int main()
