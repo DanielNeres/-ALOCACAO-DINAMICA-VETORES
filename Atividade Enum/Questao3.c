@@ -1,3 +1,8 @@
+/*3. Escreva um programa que implementa uma struct Data com os campos dia, mês e ano. O mês deve
+ser armazenado como um enum com os valores JANEIRO, FEVEREIRO, MARÇO, ABRIL, MAIO,
+JUNHO, JULHO, AGOSTO, SETEMBRO, OUTUBRO, NOVEMBRO e DEZEMBRO. O programa
+deve ler a data e imprimir a data no formato dd/mm/aaaa.*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
