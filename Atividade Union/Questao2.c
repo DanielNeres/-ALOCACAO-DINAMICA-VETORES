@@ -1,6 +1,6 @@
-/*1. Escreva um programa que implementa uma struct Pessoa com os campos nome, idade e gênero. O
-gênero deve ser armazenado como um enum com os valores MASCULINO e FEMININO. O programa
-deve ler os dados de uma pessoa e imprimir os dados da pessoa.*/
+/*2. Escreva um programa que implementa uma struct Produto com os campos nome, preço e tipo. O
+tipo deve ser armazenado como uma union que armazena um dos tipos: ALIMENTO, BEBIDA ou
+ELETRONICO. O programa deve ler os dados de um produto e imprimir os dados do produto. */
 
 #include<stdio.h>
 #include<stdlib.h>
