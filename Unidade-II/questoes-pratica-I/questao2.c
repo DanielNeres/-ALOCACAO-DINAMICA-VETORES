@@ -27,18 +27,18 @@ int main()
         printf("Erro!!!");
         exit(1);
     }
-    int tamanhovetor, media, menornumero, maiornumero;
+    int tamanhovetor, media = 0, menornumero, maiornumero, i;
     printf("digite o tamanho do vetor\n");
     scanf("%d", &tamanhovetor);
     int *vetor = malloc(sizeof(int) * tamanhovetor);
     if(vetor == NULL){
         exit(1);
     }
-    for (; tamanhovetor > 0; tamanhovetor--)
+    for (i = 0; i < tamanhovetor; i++)
     {
         printf("digite um numero\n");
-        scanf("%d", &vetor[tamanhovetor]);
-        fprintf(arquivo1, "%d\n", vetor[tamanhovetor]);
+        scanf("%d", &vetor[i]);
+        fprintf(arquivo1, "%d\n", vetor[i]);
     }
 
     fclose(arquivo1);
@@ -47,16 +47,16 @@ int main()
     FILE *arquivo2 = fopen("Saida_q2.txt", "wt");
     menornumero = vetor[0];
     maiornumero = vetor[0];
-    for (; tamanhovetor > 0; tamanhovetor--)
+    for (i = 0; i < tamanhovetor; i++)
     {
-        media = vetor[tamanhovetor];
-        if (vetor[tamanhovetor] < menornumero)
+        media += vetor[i];
+        if (vetor[i] < menornumero)
         {
-            menornumero = vetor[tamanhovetor];
+            menornumero = vetor[i];
         }
-        else if (vetor[tamanhovetor] > maiornumero)
+        else if (vetor[i] > maiornumero)
         {
-            maiornumero = vetor[tamanhovetor];
+            maiornumero = vetor[i];
         }
     }
     fprintf(arquivo2, "media = %d\n", media / tamanhovetor);
