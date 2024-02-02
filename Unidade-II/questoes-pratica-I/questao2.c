@@ -20,49 +20,76 @@ Exemplo oficial:
 
 int main()
 {
-
     FILE *arquivo1 = fopen("Entrada_q2.txt", "wt");
     if (arquivo1 == NULL)
     {
-        printf("Erro!!!");
+        printf("Erro ao abrir o arquivo de entrada!");
         exit(1);
     }
+
     int tamanhovetor, media = 0, menornumero, maiornumero, i;
-    printf("digite o tamanho do vetor\n");
+    printf("Digite o tamanho do vetor: ");
     scanf("%d", &tamanhovetor);
+
     int *vetor = malloc(sizeof(int) * tamanhovetor);
-    if(vetor == NULL){
+    if (vetor == NULL)
+    {
+        printf("Erro ao alocar memória!");
         exit(1);
     }
+
     for (i = 0; i < tamanhovetor; i++)
     {
-        printf("digite um numero\n");
+        printf("Digite um numero: ");
         scanf("%d", &vetor[i]);
         fprintf(arquivo1, "%d\n", vetor[i]);
     }
 
     fclose(arquivo1);
 
-    fopen("Entrada_q2.txt", "rt");
+    arquivo1 = fopen("Entrada_q2.txt", "rt");
+    if (arquivo1 == NULL)
+    {
+        printf("Erro ao abrir o arquivo de entrada para leitura!");
+        exit(1);
+    }
+
     FILE *arquivo2 = fopen("Saida_q2.txt", "wt");
+    if (arquivo2 == NULL)
+    {
+        printf("Erro ao abrir o arquivo de saída!");
+        exit(1);
+    }
+
     menornumero = vetor[0];
     maiornumero = vetor[0];
+
+    for (i = 0; i < tamanhovetor; i++)
+    {
+        fscanf(arquivo1, "%d", &vetor[i]);
+    }
+
     for (i = 0; i < tamanhovetor; i++)
     {
         media += vetor[i];
+
         if (vetor[i] < menornumero)
         {
             menornumero = vetor[i];
         }
-        else if (vetor[i] > maiornumero)
+        if (vetor[i] > maiornumero)
         {
             maiornumero = vetor[i];
         }
     }
-    fprintf(arquivo2, "media = %d\n", media / tamanhovetor);
-    fprintf(arquivo2, "maior nummero = %d\n", maiornumero);
-    fprintf(arquivo2, "menor numero = %d\n", menornumero);
+
+    fprintf(arquivo2, "Media = %.2f\n", (float)media / tamanhovetor);
+    fprintf(arquivo2, "Maior numero = %d\n", maiornumero);
+    fprintf(arquivo2, "Menor numero = %d\n", menornumero);
+
     fclose(arquivo1);
     fclose(arquivo2);
+    free(vetor);
+
     return 0;
 }
