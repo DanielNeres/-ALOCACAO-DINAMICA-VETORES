@@ -21,13 +21,13 @@ Exemplo oficial:
 int main()
 {
 
-    FILE *arquivo = fopen("Entrada_q2.txt", "wt");
-    if (arquivo == NULL)
+    FILE *arquivo1 = fopen("Entrada_q2.txt", "wt");
+    if (arquivo1 == NULL)
     {
         printf("Erro!!!");
         exit(1);
     }
-    int tamanhovetor;
+    int tamanhovetor, media, menornumero, maiornumero;
     printf("digite o tamanho do vetor\n");
     scanf("%d", &tamanhovetor);
     int *vetor = malloc(sizeof(int) * tamanhovetor);
@@ -35,17 +35,23 @@ int main()
     {
         printf("digite um numero\n");
         scanf("%d", &vetor[tamanhovetor]);
-        fprintf(arquivo, "%d", vetor[tamanhovetor]);
+        fprintf(arquivo1, "%d", vetor[tamanhovetor]);
     }
 
-    fclose(arquivo);
+    fclose(arquivo1);
 
     fopen("Entrada_q2.txt", "rt");
-    FILE *arquivo2 = fopen("Saida", "wr");
+    FILE *arquivo2 = fopen("Saida_q2", "wr");
     for (; tamanhovetor > 0; tamanhovetor--)
     {
-        fprintf(arquivo, "%d", vetor[tamanhovetor]);
+        media = vetor[tamanhovetor];
+    if(vetor[tamanhovetor] < menornumero){
+        menornumero = vetor[tamanhovetor];
+    } else if(vetor[tamanhovetor] > maiornumero){
+        menornumero = vetor[tamanhovetor];
     }
-    fscanf(arquivo, "%d\n", &vetor[tamanhovetor]);
+    }
+    fprintf(arquivo2, "%d", media/tamanhovetor);
+    
     return 0;
 }
