@@ -42,16 +42,19 @@ int main()
 
     fopen("Entrada_q2.txt", "rt");
     FILE *arquivo2 = fopen("Saida_q2", "wr");
+    menornumero = vetor[tamanhovetor];
+    maiornumero = vetor[tamanhovetor];
     for (; tamanhovetor > 0; tamanhovetor--)
     {
         media = vetor[tamanhovetor];
     if(vetor[tamanhovetor] < menornumero){
         menornumero = vetor[tamanhovetor];
     } else if(vetor[tamanhovetor] > maiornumero){
-        menornumero = vetor[tamanhovetor];
+        maiornumero = vetor[tamanhovetor];
     }
     }
-    fprintf(arquivo2, "%d", media/tamanhovetor);
-    
+    fprintf(arquivo2, "media = %d", media/tamanhovetor);
+    fprintf(arquivo2, "maior nummero = %d", maiornumero);
+    fprintf(arquivo2, "menor numero = %d", menornumero);
     return 0;
 }
