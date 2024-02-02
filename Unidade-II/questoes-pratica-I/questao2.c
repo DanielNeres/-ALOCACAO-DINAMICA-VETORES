@@ -18,9 +18,10 @@ Exemplo oficial:
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(){
+int main()
+{
 
-FILE *arquivo = fopen("Entrada_q2.txt", "wt");
+    FILE *arquivo = fopen("Entrada_q2.txt", "wt");
     if (arquivo == NULL)
     {
         printf("Erro!!!");
@@ -30,11 +31,21 @@ FILE *arquivo = fopen("Entrada_q2.txt", "wt");
     printf("digite o tamanho do vetor\n");
     scanf("%d", &tamanhovetor);
     int *vetor = malloc(sizeof(int) * tamanhovetor);
-    for(;tamanhovetor > 0;tamanhovetor--){
-    printf("digite um numero");
-    scanf("%d", vetor[tamanhovetor]);
-    fprintf(arquivo, "%d", vetor[tamanhovetor]);
+    for (; tamanhovetor > 0; tamanhovetor--)
+    {
+        printf("digite um numero\n");
+        scanf("%d", vetor[tamanhovetor]);
+        fprintf(arquivo, "%d", vetor[tamanhovetor]);
     }
+
     fclose(arquivo);
+
+    fopen("Entrada_q2.txt", "rt");
+    FILE *arquivo2 = fopen("Saida", "wr");
+    for (; tamanhovetor > 0; tamanhovetor--)
+    {
+        fprintf(arquivo, "%d", vetor[tamanhovetor]);
+    }
+    fscanf(arquivo, "%d\n", &vetor[tamanhovetor]);
     return 0;
 }
