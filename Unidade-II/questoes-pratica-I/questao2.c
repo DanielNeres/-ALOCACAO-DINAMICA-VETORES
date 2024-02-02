@@ -34,7 +34,7 @@ int main()
     for (; tamanhovetor > 0; tamanhovetor--)
     {
         printf("digite um numero\n");
-        scanf("%d", vetor[tamanhovetor]);
+        scanf("%d", &vetor[tamanhovetor]);
         fprintf(arquivo, "%d", vetor[tamanhovetor]);
     }
 
