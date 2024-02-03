@@ -1,0 +1,8 @@
+Dados do Funcionario 1
+marcos	3532454
+2300.75
+
+Dados do Funcionario 2
+roger	345324
+5000.10
+

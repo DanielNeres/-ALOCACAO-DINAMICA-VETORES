@@ -23,15 +23,20 @@ int main()
     Funcionarios funcionarios_var;
     for (i = 1; QuantidadeFuncionarios >= i; i++)
     {
-        printf("digite o nome do funcionario %d:\t", i);
+        fprintf(arquivo, "Dados do Funcionario %d\n", i);
+
+        printf("digite o nome do funcionario %d:\n", i);
         scanf(" %s", funcionarios_var.nome);
-        fprintf(arquivo, "%s\t", funcionarios_var.nome);
-        printf("digite o ID do funcionario %d:\t", i);
+        fprintf(arquivo, "Nome: %s\t", funcionarios_var.nome);
+
+        printf("digite o ID do funcionario %d:\n", i);
         scanf("%d", &funcionarios_var.ID);
-        fprintf(arquivo, "%d\n", funcionarios_var.ID);
-        printf("digite o salario do funcionario %d:\t", i);
+        fprintf(arquivo, "ID: %d\n", funcionarios_var.ID);
+
+        printf("digite o salario do funcionario %d:\n", i);
         scanf("%f", &funcionarios_var.Salario);
-        fprintf(arquivo, "%f\n", funcionarios_var.Salario);
+        fprintf(arquivo, "Salario:  R$%.2f\n\n", funcionarios_var.Salario);
+        system("cls");
     }
     fclose(arquivo);
 }
