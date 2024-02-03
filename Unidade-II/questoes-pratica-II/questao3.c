@@ -44,10 +44,11 @@ int main()
         return 1;
     }
     Frutas frutas_var;
-    int permanencia = 1, i = 1;
+    int permanencia, i = 1;
     char escolhapermanencia;
     do
     {
+        permanencia = 0;
         system("cls");
         fprintf(arquivo, "Dados da fruta %d\n", i);
 
@@ -64,10 +65,9 @@ int main()
         if(escolhapermanencia != 'c' && escolhapermanencia != 'C'){
             permanencia = 1;
             printf("Programa encerrado com sucesso");
-            return 0;
         }
         i++;
-    }while (permanencia != 0);
+    }while (permanencia != 1);
     
     fclose(arquivo);
 }
