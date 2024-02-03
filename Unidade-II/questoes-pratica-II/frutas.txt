@@ -1,3 +1,0 @@
-Dados da fruta 1
-Nome: banana	ID: 0
-
