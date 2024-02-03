@@ -1,8 +1,8 @@
 Dados do Funcionario 1
-marcos	3532454
-2300.75
+Nome: Marcos	ID: 324321
+Salario:  R$5000.75
 
 Dados do Funcionario 2
-roger	345324
-5000.10
+Nome: Roger	ID: 246574
+Salario:  R$2700.20
 
