@@ -11,6 +11,7 @@ int main()
     }
     int QuantidadeNotas, QuantidadeAlunos, i, j;
     printf("digite quantas notas os alunos tem alunos\n");
+    scanf("%d", &QuantidadeNotas);
     float *notas = malloc(sizeof(float)*QuantidadeNotas);
     printf("digite a quantidade de alunos\n");
     scanf("%d", &QuantidadeAlunos);
