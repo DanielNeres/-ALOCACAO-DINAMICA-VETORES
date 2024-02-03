@@ -27,10 +27,10 @@ int main()
         scanf(" %s", funcionarios_var.nome);
         fprintf(arquivo, "%s\t", funcionarios_var.nome);
         printf("digite o ID do funcionario %d:\t", i);
-        scanf("%d", funcionarios_var.ID);
+        scanf("%d", &funcionarios_var.ID);
         fprintf(arquivo, "%d\n", funcionarios_var.ID);
         printf("digite o salario do funcionario %d:\t", i);
-        scanf("%f", funcionarios_var.Salario);
+        scanf("%f", &funcionarios_var.Salario);
         fprintf(arquivo, "%f\n", funcionarios_var.Salario);
     }
     fclose(arquivo);
