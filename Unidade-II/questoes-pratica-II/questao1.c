@@ -1,3 +1,7 @@
+/*1. Faça um programa em C que solicita ao usuário informaçõoes de funcionários via teclado. 
+As informações digitadas pelo o usuário são: id, nome e salário do funcionário. Armazene 
+as informações digitadas pelo usuário em um arquivo texto.*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
