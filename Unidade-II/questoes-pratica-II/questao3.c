@@ -53,14 +53,14 @@ int main()
 
         printf("digite o nome da fruta %d:\n", i);
         scanf(" %s", frutas_var.Nome);
-        fprintf(arquivo, "Nome: %s\t", frutas_var.Nome);
+        fprintf(arquivo, "%s, ", frutas_var.Nome);
 
-        printf("digite o preco %d:\n", i);
+        printf("digite o preco da fruta %d:\n", i);
         scanf("%d", &frutas_var.preco);
-        fprintf(arquivo, "ID: %d\n\n", frutas_var.preco);
+        fprintf(arquivo, "%d\n\n", frutas_var.preco);
 
         printf("Se deseja continuar fazendo cadastro digite 'C'\n");
-        scanf(" %c", &escolhapermanencia);
+        scanf(" %c", escolhapermanencia);
         if(escolhapermanencia != 'c' || escolhapermanencia != 'C'){
             permanencia = 1;
             printf("Programa encerrado com sucesso");
