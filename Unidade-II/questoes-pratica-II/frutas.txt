@@ -1,0 +1,9 @@
+Dados da fruta 1
+terr, 0
+
+Dados da fruta 2
+trere, 0
+
+Dados da fruta 3
+6465, 0
+

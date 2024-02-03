@@ -44,11 +44,10 @@ int main()
         return 1;
     }
     Frutas frutas_var;
-    int permanencia, i = 1;
+    int permanencia = 0, i = 1;
     char escolhapermanencia;
     do
     {
-        permanencia = 0;
         system("cls");
         fprintf(arquivo, "Dados da fruta %d\n", i);
 
@@ -58,7 +57,7 @@ int main()
 
         printf("digite o preco da fruta %d:\n", i);
         scanf("%f", &frutas_var.preco);
-        fprintf(arquivo, "%d\n\n", frutas_var.preco);
+        fprintf(arquivo, "%.2f\n\n", frutas_var.preco);
 
         printf("Se deseja continuar fazendo cadastro digite 'C'\n");
         scanf(" %c", &escolhapermanencia);
