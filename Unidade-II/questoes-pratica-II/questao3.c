@@ -34,11 +34,11 @@ int main()
 
         printf("Se deseja continuar fazendo cadastro digite 'C'");
         scanf("%c", &escolhapermanencia);
-        if(escolhapermanencia =! 'c' || escolhapermanencia =! 'C'){
+        if(escolhapermanencia != 'c' || escolhapermanencia != 'C'){
             permanencia = 1;
         }
 
-    }while (permanencia =! 0);
+    }while (permanencia != 0);
     
     fclose(arquivo);
 }
