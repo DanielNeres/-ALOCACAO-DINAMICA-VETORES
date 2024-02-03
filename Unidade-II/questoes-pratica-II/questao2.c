@@ -23,6 +23,7 @@ int main()
     {
         system("cls");
         fprintf(arquivo, "notas do aluno %d\n", i);
+        printf("aluno %d\n", i);
         for (j = 0; j < QuantidadeNotas; j++)
         {
             printf("digite a nota %d: \t", j + 1);
