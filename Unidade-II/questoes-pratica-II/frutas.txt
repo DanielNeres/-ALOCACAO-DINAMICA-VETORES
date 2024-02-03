@@ -1,9 +1,9 @@
 Dados da fruta 1
-terr, 0
+Banana, 4.50
 
 Dados da fruta 2
-trere, 0
+Uva, 6.65
 
 Dados da fruta 3
-6465, 0
+Cacau, 17.40
 
