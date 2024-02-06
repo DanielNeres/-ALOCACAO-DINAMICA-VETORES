@@ -57,14 +57,14 @@ Aluno * matricula_N_alunos()
     }
     for (i = 0; i < Quantidade_Alunos; i++)
     {
-        printf("Dados do aluno %d\n", i + 1);
+        printf("\nDados do aluno %d\n", i + 1);
         printf("Informe o nome do aluno\n");
         scanf(" %[^\n]", estudante[i].nome);
 
         printf("Informe a matricula do aluno\n");
         scanf("%d", &estudante[i].matricula);
 
-        printf("Informe o ira do aluno\n\n");
+        printf("Informe o ira do aluno\n");
         scanf("%f", &estudante[i].IRA);
     }
 }
