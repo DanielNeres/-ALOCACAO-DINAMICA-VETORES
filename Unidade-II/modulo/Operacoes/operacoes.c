@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include "tentandofazer.h"
+#include "operacoes.h"
 
 float AoQuadrado(float numero){
     return (numero * numero);

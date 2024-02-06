@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "tentandofazer.h"
+#include "operacoes.h"
 
 int main(){
     float numeroa, numerob, expoente;
