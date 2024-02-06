@@ -10,4 +10,4 @@ void imprimir_dados(Aluno *imprimir, int QuantidadeAlunos);
 void liberar_memoria(Aluno *liberar);
 
 /*Função que aloca memoria para um struct Aluno via teclado, e retorna um ponteiro para Aluno*/
-Aluno * matricula_N_alunos();
+void matricula_N_alunos(Aluno *estudante, int Quantidade_Alunos);

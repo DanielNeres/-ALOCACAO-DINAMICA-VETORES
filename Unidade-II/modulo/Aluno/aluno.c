@@ -45,18 +45,9 @@ void liberar_memoria(Aluno *liberar)
     printf("\nmemoria liberada com sucesso\n");
 }
 
-Aluno * matricula_N_alunos()
+void matricula_N_alunos(Aluno *estudante, int Quantidade_Alunos)
 {
-    int Quantidade_Alunos, i;
-    printf("Informe a quantidade de alunos\n");
-    scanf(" %d", &Quantidade_Alunos);
-
-    Aluno *estudante = (Aluno *)malloc(sizeof(Aluno) * Quantidade_Alunos);
-    if (estudante == NULL)
-    {
-        printf("Erro!\n");
-        exit(1);
-    }
+    int  i;
     for (i = 0; i < Quantidade_Alunos; i++)
     {
         printf("\nDados do aluno %d\n", i + 1);
