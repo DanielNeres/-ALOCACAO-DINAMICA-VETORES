@@ -29,12 +29,14 @@ Aluno *recebe_dados(void)
     return estudante;
 }
 
-void imprimir_dados(Aluno *imprimir)
+void imprimir_dados(Aluno *imprimir, int QuantidadeAlunos)
 {
-
-    printf("\nnome = %s\n", imprimir->nome);
-    printf("matricula = %d\n", imprimir->matricula);
-    printf("IRA = %f\n", imprimir->IRA);
+    int i;
+    for(i = 0; i < QuantidadeAlunos; i++){
+    printf("\nnome = %s\n", imprimir[i].nome);
+    printf("matricula = %d\n", imprimir[i].matricula);
+    printf("IRA = %f\n", imprimir[i].IRA);
+    }
 }
 
 void liberar_memoria(Aluno *liberar)
