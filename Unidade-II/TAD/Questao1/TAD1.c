@@ -19,3 +19,15 @@ void preencher(Ingresso * i, int QuantidadeIngresso)
 		printf("digite o preco\n");
 		scanf("%f", &i[QuantidadeIngresso].preco);
 	}
+
+void imprimir(Ingresso * i, int QuantidadeIngresso)
+	{
+		int j;
+		for (j = 0; j < QuantidadeIngresso; j++)
+		{
+			printf("dados do ingresso %d\n", j + 1);
+			printf("local: %s\n", i[j].local);
+			printf("atracao: %s\n", i[j].atracao);
+			printf("preco: R$%f\n\n", i[j].preco);
+		}
+	}
