@@ -15,6 +15,7 @@ void copia_dados(FILE *fl, int n, Funcionario **pessoal)
     int i;
     for (i = 0; i < n; i++)
     {
+        fopen(fl, "wr");
         printf("Digite os dados do Funcionario %d\n\n", i + 1);
         printf("Digite o funcional do Funcionario: \t");
         scanf(" %[^\n]", pessoal[i]->Funcional);
@@ -28,4 +29,8 @@ void copia_dados(FILE *fl, int n, Funcionario **pessoal)
         printf("Digite o salario do Funcionario: \t");
         scanf(" %[^\n]", pessoal[i]->Salario);
     }
+}
+
+void imprime_folha_pagamento(int n, Funcionario ** pessoal, char depto){
+
 }
