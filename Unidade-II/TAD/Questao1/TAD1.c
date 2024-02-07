@@ -69,13 +69,6 @@ void menu()
 				break;
 			}
 			system("cls");
-			printf("escolha o ingresso entre os numeros ");
-			for (j = 1; j <= QuantidadeIngresso; j++)
-			{
-				printf("%d ", j);
-			}
-			printf("para mudar o preco\n");
-			scanf("%f", &valor);
 			printf("digite o novo preco do ingresso\n");
 			scanf("%f", &valor);
 			alterar_preco(i, valor);
@@ -138,9 +131,12 @@ void imprimir(Ingressos * i)
 			printf("preco: R$%f\n\n", i->preco);
 	}
 
-void alterar_preco(Ingressos * i, float valor)
-	{
-		i[j].preco = valor;
+void alterar_preco(Ingressos * i, float valor){
+	    int posicao;
+		printf("escolha o ingresso entre os numeros para mudar o preco\n");
+		scanf("%d", &posicao);
+		i[posicao].preco = valor;
+
 	}
 
 void imprimir_menor_maior_preco(int n, Ingressos * i)
