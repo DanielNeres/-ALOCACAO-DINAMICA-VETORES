@@ -31,3 +31,8 @@ void imprimir(Ingresso * i, int QuantidadeIngresso)
 			printf("preco: R$%f\n\n", i[j].preco);
 		}
 	}
+
+void alterar_preco(Ingresso * i, float valor, int j)
+	{
+		i[j].preco = valor;
+	}
