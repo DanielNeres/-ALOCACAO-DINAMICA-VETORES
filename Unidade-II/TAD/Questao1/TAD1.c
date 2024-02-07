@@ -36,3 +36,21 @@ void alterar_preco(Ingresso * i, float valor, int j)
 	{
 		i[j].preco = valor;
 	}
+
+void imprimir_menor_maior_preco(int n, Ingresso * i)
+	{
+		int j, Maiorpreco = 0, Menorpreco = 0;
+		for (j = 1; j < n; j++)
+		{
+			if (i[j].preco < i[Menorpreco].preco)
+			{
+				Menorpreco = j;
+			}
+			if (i[j].preco > i[Maiorpreco].preco)
+			{
+				Maiorpreco = j;
+			}
+		}
+		printf("%s e a atracao mais barata, com o preco de R$%f;\n", i[Menorpreco].atracao, i[Menorpreco].preco);
+		printf("%s e a atracao mais cara, com o preco de R$%f.\n", i[Maiorpreco].atracao, i[Maiorpreco].preco);
+	}
