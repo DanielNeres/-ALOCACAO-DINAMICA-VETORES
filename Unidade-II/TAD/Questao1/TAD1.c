@@ -42,7 +42,7 @@ void menu()
 				break;
 			}
 			system("cls");
-			preenche(i, QuantidadeIngresso);
+			preencher(i, QuantidadeIngresso);
 			QuantidadeIngresso++;
 			Menu = RetornarMenu();
 			break;
@@ -55,7 +55,7 @@ void menu()
 				break;
 			}
 			system("cls");
-			imprime(i, QuantidadeIngresso);
+			imprimir(i, QuantidadeIngresso);
 			Menu = RetornarMenu();
 			break;
 		case 3:
@@ -76,7 +76,7 @@ void menu()
 			scanf("%f", &valor);
 			printf("digite o novo preco do ingresso\n");
 			scanf("%f", &valor);
-			altera_preco(i, valor, j);
+			alterar_preco(i, valor, j);
 			Menu = RetornarMenu();
 			break;
 		case 4:
@@ -88,7 +88,7 @@ void menu()
 				break;
 			}
 			system("cls");
-			imprime_menor_maior_preco(QuantidadeIngresso, i);
+			imprimir_menor_maior_preco(QuantidadeIngresso, i);
 			Menu = RetornarMenu();
 			break;
 		default:
@@ -161,6 +161,6 @@ void imprimir_menor_maior_preco(int n, Ingressos * i)
 				Maiorpreco = j;
 			}
 		}
-		printf("%s e a atracao mais barata, com o preco de R$%f;\n", i[Menorpreco].atracao, i[Menorpreco].preco);
-		printf("%s e a atracao mais cara, com o preco de R$%f.\n", i[Maiorpreco].atracao, i[Maiorpreco].preco);
+		printf("%s e a atracao mais barata, com o preco de R$%.2f;\n", i[Menorpreco].atracao, i[Menorpreco].preco);
+		printf("%s e a atracao mais cara, com o preco de R$%.2f.\n", i[Maiorpreco].atracao, i[Maiorpreco].preco);
 	}
