@@ -4,10 +4,10 @@ void menu();
 
 int RetornarMenu();
 
-void preencher(Ingressos * i, int QuantidadeIngresso);
+void preencher(Ingressos * i);
 
-void imprimir(Ingressos *i, int QuantidadeIngresso);
+void imprimir(Ingressos *i);
 
-void alterar_preco(Ingressos *i, float valor, int QuantidadeIngresso);
+void alterar_preco(Ingressos *i, float valor);
 
 void imprimir_menor_maior_preco(int n, Ingressos * i);

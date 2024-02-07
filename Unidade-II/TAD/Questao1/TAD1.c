@@ -11,9 +11,9 @@ struct ingresso
 
 void menu()
 {
-	int escolhamenu, MaxIngresso, QuantidadeIngresso = 0, Menu = 0, j;
+	int escolhamenu, MaxIngresso, QuantidadeIngresso = 0, Menu = 0, j, contador;
 	float valor;
-	printf("digite a quantidade de ingressos maxima\n");
+	printf("digite a quantidade maxima de ingressos\n");
 	scanf("%i", &MaxIngresso);
 	Ingressos *i = (Ingressos *)malloc(sizeof(Ingressos) * MaxIngresso);
 	if (i == NULL)
@@ -42,7 +42,7 @@ void menu()
 				break;
 			}
 			system("cls");
-			preencher(i, QuantidadeIngresso);
+			preencher(&i[QuantidadeIngresso]);
 			QuantidadeIngresso++;
 			Menu = RetornarMenu();
 			break;
@@ -119,18 +119,18 @@ int RetornarMenu()
 	}
 }
 
-void preencher(Ingressos * i, int QuantidadeIngresso)
+void preencher(Ingressos * i)
 	{
-		printf("preencha dados do ingresso %d\n", QuantidadeIngresso + 1);
+		printf("preencha dados do ingresso\n");
 		printf("digite o local\n");
-		scanf(" %[^\n]", i[QuantidadeIngresso].local);
+		scanf(" %[^\n]", i.local);
 		printf("digite a atracao\n");
-		scanf(" %[^\n]", i[QuantidadeIngresso].atracao);
+		scanf(" %[^\n]", i.atracao);
 		printf("digite o preco\n");
-		scanf("%f", &i[QuantidadeIngresso].preco);
+		scanf("%f", &i.preco);
 	}
 
-void imprimir(Ingressos * i, int QuantidadeIngresso)
+void imprimir(Ingressos * i)
 	{
 		int j;
 		for (j = 0; j < QuantidadeIngresso; j++)
@@ -142,7 +142,7 @@ void imprimir(Ingressos * i, int QuantidadeIngresso)
 		}
 	}
 
-void alterar_preco(Ingressos * i, float valor, int j)
+void alterar_preco(Ingressos * i, float valor)
 	{
 		i[j].preco = valor;
 	}
