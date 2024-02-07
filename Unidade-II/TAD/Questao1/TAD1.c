@@ -9,6 +9,97 @@ typedef struct
 	char atracao[60];
 } Ingresso;
 
+void menu()
+{
+	int escolhamenu, MaxIngresso, QuantidadeIngresso = 0, Menu = 0, j;
+	float valor;
+	printf("digite a quantidade de ingressos maxima\n");
+	scanf("%i", &MaxIngresso);
+	Ingresso *i = (Ingresso *)malloc(sizeof(Ingresso) * MaxIngresso);
+	if (i == NULL)
+	{
+		exit(1);
+	}
+	system("cls");
+	do
+	{
+		printf("MENU\n");
+		printf("1. preencher informacoes do ingresso\n");
+		printf("2. imprimir informacoes do ingresso\n");
+		printf("3. mudar preco dos ingressos\n");
+		printf("4. imprecao do Ingresso com maior e menor preco\n");
+		printf("escolha o numero de uma das opicoes acima\n");
+
+		scanf("%i", &escolhamenu);
+		switch (escolhamenu)
+		{
+		case 1:
+			if (QuantidadeIngresso == MaxIngresso)
+			{
+				system("cls");
+				printf("quantidade maxima de ingressos atingida\n\n");
+				Menu = 1;
+				break;
+			}
+			system("cls");
+			preenche(i, QuantidadeIngresso);
+			QuantidadeIngresso++;
+			Menu = RetornarMenu();
+			break;
+		case 2:
+			if (QuantidadeIngresso == 0)
+			{
+				system("cls");
+				printf("nenhum ingresso cadastrado\n\n");
+				Menu = 1;
+				break;
+			}
+			system("cls");
+			imprime(i, QuantidadeIngresso);
+			Menu = RetornarMenu();
+			break;
+		case 3:
+			if (QuantidadeIngresso == 0)
+			{
+				system("cls");
+				printf("nenhum ingresso cadastrado\n\n");
+				Menu = 1;
+				break;
+			}
+			system("cls");
+			printf("escolha o ingresso entre os numeros ");
+			for (j = 1; j <= QuantidadeIngresso; j++)
+			{
+				printf("%d ", j);
+			}
+			printf("para mudar o preco\n");
+			scanf("%f", &valor);
+			printf("digite o novo preco do ingresso\n");
+			scanf("%f", &valor);
+			altera_preco(i, valor, j);
+			Menu = RetornarMenu();
+			break;
+		case 4:
+			if (QuantidadeIngresso == 0)
+			{
+				system("cls");
+				printf("nenhum ingresso cadastrado\n\n");
+				Menu = 1;
+				break;
+			}
+			system("cls");
+			imprime_menor_maior_preco(QuantidadeIngresso, i);
+			Menu = RetornarMenu();
+			break;
+		default:
+			exit(1);
+			break;
+		}
+
+	} while (Menu == 1);
+	free(i);
+}
+
 void preencher(Ingresso * i, int QuantidadeIngresso)
 	{
 		printf("preencha dados do ingresso %d\n", QuantidadeIngresso + 1);
