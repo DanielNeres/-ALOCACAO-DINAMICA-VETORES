@@ -11,12 +11,16 @@ struct funcionario
 
 void copia_dados(FILE *fl, int n, Funcionario **pessoal)
 {
-
+    fopen(fl, "wr");
+    fprintf(fl, "Funcional\tNome\tDepartamento\tSalario\n");
+    
     int i;
     for (i = 0; i < n; i++)
     {
-        fopen(fl, "wr");
+        
         printf("Digite os dados do Funcionario %d\n\n", i + 1);
+        fprintf(fl, "Funcional\tNome\tDepartamento\tSalario\n");
+
         printf("Digite o funcional do Funcionario: \t");
         scanf(" %[^\n]", pessoal[i]->Funcional);
 
@@ -28,7 +32,9 @@ void copia_dados(FILE *fl, int n, Funcionario **pessoal)
 
         printf("Digite o salario do Funcionario: \t");
         scanf(" %[^\n]", pessoal[i]->Salario);
+
     }
+    fclose(fl);
 }
 
 void imprime_folha_pagamento(int n, Funcionario ** pessoal, char depto){
