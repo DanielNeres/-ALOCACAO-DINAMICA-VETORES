@@ -128,14 +128,14 @@ void imprimir(Ingressos * i)
 	{
 			printf("local: %s\n", i->local);
 			printf("atracao: %s\n", i->atracao);
-			printf("preco: R$%f\n\n", i->preco);
+			printf("preco: R$%.2f\n\n", i->preco);
 	}
 
 void alterar_preco(Ingressos * i, float valor){
 	    int posicao;
 		printf("escolha o ingresso entre os numeros para mudar o preco\n");
 		scanf("%d", &posicao);
-		i[posicao].preco = valor;
+		i[posicao + 1].preco = valor;
 
 	}
 
