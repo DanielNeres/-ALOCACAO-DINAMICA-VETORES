@@ -100,6 +100,25 @@ void menu()
 	free(i);
 }
 
+int RetornarMenu()
+{
+	char retornoMenu;
+	printf("caso desejar retornar para o menu digite M, ou digite qualquer tecla para sair\n");
+	while (getchar() != '\n')
+		;
+	retornoMenu = getchar();
+	if (retornoMenu == 'M' || retornoMenu == 'm')
+	{
+		system("cls");
+		return 1;
+	}
+	else
+	{
+		system("cls");
+		return 0;
+	}
+}
+
 void preencher(Ingresso * i, int QuantidadeIngresso)
 	{
 		printf("preencha dados do ingresso %d\n", QuantidadeIngresso + 1);
