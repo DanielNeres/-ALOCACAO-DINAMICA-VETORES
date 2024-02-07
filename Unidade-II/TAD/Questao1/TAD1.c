@@ -55,7 +55,9 @@ void menu()
 				break;
 			}
 			system("cls");
-			imprimir(i, QuantidadeIngresso);
+			for(contador = 0; contador < QuantidadeIngresso; contador++){
+			imprimir(&i[contador]);
+			}
 			Menu = RetornarMenu();
 			break;
 		case 3:
@@ -76,7 +78,7 @@ void menu()
 			scanf("%f", &valor);
 			printf("digite o novo preco do ingresso\n");
 			scanf("%f", &valor);
-			alterar_preco(i, valor, j);
+			alterar_preco(i, valor);
 			Menu = RetornarMenu();
 			break;
 		case 4:
@@ -104,8 +106,7 @@ int RetornarMenu()
 {
 	char retornoMenu;
 	printf("caso desejar retornar para o menu digite M, ou digite qualquer tecla para sair\n");
-	while (getchar() != '\n')
-		;
+	while (getchar() != '\n');
 	retornoMenu = getchar();
 	if (retornoMenu == 'M' || retornoMenu == 'm')
 	{
@@ -123,23 +124,18 @@ void preencher(Ingressos * i)
 	{
 		printf("preencha dados do ingresso\n");
 		printf("digite o local\n");
-		scanf(" %[^\n]", i.local);
+		scanf(" %[^\n]", i->local);
 		printf("digite a atracao\n");
-		scanf(" %[^\n]", i.atracao);
+		scanf(" %[^\n]", i->atracao);
 		printf("digite o preco\n");
-		scanf("%f", &i.preco);
+		scanf("%f", &i->preco);
 	}
 
 void imprimir(Ingressos * i)
 	{
-		int j;
-		for (j = 0; j < QuantidadeIngresso; j++)
-		{
-			printf("dados do ingresso %d\n", j + 1);
-			printf("local: %s\n", i[j].local);
-			printf("atracao: %s\n", i[j].atracao);
-			printf("preco: R$%f\n\n", i[j].preco);
-		}
+			printf("local: %s\n", i->local);
+			printf("atracao: %s\n", i->atracao);
+			printf("preco: R$%f\n\n", i->preco);
 	}
 
 void alterar_preco(Ingressos * i, float valor)
