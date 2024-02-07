@@ -7,7 +7,7 @@ typedef struct
 	float preco;
 	char local[60];
 	char atracao[60];
-} Ingresso;
+} ingresso;
 
 void menu()
 {
@@ -15,7 +15,7 @@ void menu()
 	float valor;
 	printf("digite a quantidade de ingressos maxima\n");
 	scanf("%i", &MaxIngresso);
-	Ingresso *i = (Ingresso *)malloc(sizeof(Ingresso) * MaxIngresso);
+	ingresso *i = (ingresso *)malloc(sizeof(ingresso) * MaxIngresso);
 	if (i == NULL)
 	{
 		exit(1);
@@ -119,7 +119,7 @@ int RetornarMenu()
 	}
 }
 
-void preencher(Ingresso * i, int QuantidadeIngresso)
+void preencher(ingresso * i, int QuantidadeIngresso)
 	{
 		printf("preencha dados do ingresso %d\n", QuantidadeIngresso + 1);
 		printf("digite o local\n");
@@ -130,7 +130,7 @@ void preencher(Ingresso * i, int QuantidadeIngresso)
 		scanf("%f", &i[QuantidadeIngresso].preco);
 	}
 
-void imprimir(Ingresso * i, int QuantidadeIngresso)
+void imprimir(ingresso * i, int QuantidadeIngresso)
 	{
 		int j;
 		for (j = 0; j < QuantidadeIngresso; j++)
@@ -142,12 +142,12 @@ void imprimir(Ingresso * i, int QuantidadeIngresso)
 		}
 	}
 
-void alterar_preco(Ingresso * i, float valor, int j)
+void alterar_preco(ingresso * i, float valor, int j)
 	{
 		i[j].preco = valor;
 	}
 
-void imprimir_menor_maior_preco(int n, Ingresso * i)
+void imprimir_menor_maior_preco(int n, ingresso * i)
 	{
 		int j, Maiorpreco = 0, Menorpreco = 0;
 		for (j = 1; j < n; j++)
