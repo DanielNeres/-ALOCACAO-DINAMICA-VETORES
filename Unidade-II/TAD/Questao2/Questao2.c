@@ -4,10 +4,12 @@
 
 int main(){
 
-    int quanditade_funcionarios;
+    int n;
     printf("Digite a quantidade de funcionarios");
-    scanf("%d", &quanditade_funcionarios);
-    Funcionario **pessoal;
+    scanf("%d", &n);
+    Funcionario **pessoal = (Funcionario **)malloc(sizeof(Funcionario*) * n);
+    FILE *fl = fopen("Funcionario.txt", "wr");
     void copia_dados(FILE *fl, int n, Funcionario **pessoal);
+
     return 0;
 }

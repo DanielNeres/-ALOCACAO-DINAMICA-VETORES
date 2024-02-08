@@ -30,6 +30,7 @@ void copia_dados(FILE *fl, int n, Funcionario **pessoal)
 
         printf("Digite o Departamento do Funcionario: \t");
         scanf(" %c", pessoal[i]->Departamento);
+        toupper(pessoal[i]->Departamento);
         fprintf(fl, "\t%c", pessoal[i]->Departamento);
 
         printf("Digite o salario do Funcionario: \t");
