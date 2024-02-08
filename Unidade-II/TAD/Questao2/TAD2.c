@@ -19,20 +19,22 @@ void copia_dados(FILE *fl, int n, Funcionario **pessoal)
     {
         
         printf("Digite os dados do Funcionario %d\n\n", i + 1);
-        fprintf(fl, "Funcional\tNome\tDepartamento\tSalario\n");
 
         printf("Digite o funcional do Funcionario: \t");
         scanf(" %[^\n]", pessoal[i]->Funcional);
+        fprintf(fl, "%[^\n]", pessoal[i]->Funcional);
 
         printf("Digite o nome do Funcionario: \t");
         scanf(" %[^\n]", pessoal[i]->Nome);
+        fprintf(fl, "\t%[^\n]", pessoal[i]->Nome);
 
         printf("Digite o Departamento do Funcionario: \t");
         scanf(" %c", pessoal[i]->Departamento);
+        fprintf(fl, "\t%c", pessoal[i]->Departamento);
 
         printf("Digite o salario do Funcionario: \t");
-        scanf(" %[^\n]", pessoal[i]->Salario);
-
+        scanf(" %f", pessoal[i]->Salario);
+        fprintf(fl, "\t%.2f\n", pessoal[i]->Salario);
     }
     fclose(fl);
 }
