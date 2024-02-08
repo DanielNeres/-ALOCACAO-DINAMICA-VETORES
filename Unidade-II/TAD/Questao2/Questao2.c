@@ -6,14 +6,14 @@ int main(){
 
     int n;
     char depto;
-    printf("Digite a quantidade de funcionarios");
+    printf("Digite a quantidade de funcionarios\n");
     scanf("%d", &n);
     Funcionario **pessoal = (Funcionario **)malloc(sizeof(Funcionario*) * n);
     FILE *fl = fopen("Funcionario.txt", "wr");
-    void copia_dados(FILE *fl, int n, Funcionario **pessoal);
-    printf("Digite o departento");
-    scanf("%c", &depto);
-    void imprime_folha_pagamento(n, pessoal, depto);
+    copia_dados(fl, n, pessoal);
+    printf("Digite o departento\n");
+    scanf(" %c", &depto);
+    imprime_folha_pagamento(n, pessoal, depto);
 
     return 0;
 }

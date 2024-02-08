@@ -11,7 +11,6 @@ struct funcionario
 
 void copia_dados(FILE *fl, int n, Funcionario **pessoal)
 {
-    fopen(fl, "wr");
     fprintf(fl, "Funcional\tNome\tDepartamento\tSalario\n");
 
     int i;
@@ -29,12 +28,12 @@ void copia_dados(FILE *fl, int n, Funcionario **pessoal)
         fprintf(fl, "\t%[^\n]", pessoal[i]->Nome);
 
         printf("Digite o Departamento do Funcionario: \t");
-        scanf(" %c", pessoal[i]->Departamento);
+        scanf(" %c", &pessoal[i]->Departamento);
         toupper(pessoal[i]->Departamento);
         fprintf(fl, "\t%c", pessoal[i]->Departamento);
 
         printf("Digite o salario do Funcionario: \t");
-        scanf(" %f", pessoal[i]->Salario);
+        scanf(" %f", &pessoal[i]->Salario);
         fprintf(fl, "\t%.2f\n", pessoal[i]->Salario);
     }
     fclose(fl);
