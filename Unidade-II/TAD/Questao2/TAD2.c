@@ -45,7 +45,7 @@ void imprime_folha_pagamento(int n, Funcionario **pessoal, char depto)
     int i;
     for (i = 0; i < n; i++)
         printf("Funcional\tNome\tDepartamento\tSalario\n");
-    if (depto = pessoal[i]->Departamento);
+    if (depto == pessoal[i]->Departamento);
     {
         printf("%[^\n]\t%[^\n]\t%c\t%.2f", pessoal[i]->Funcional, pessoal[i]->Nome, pessoal[i]->Departamento, pessoal[i]->Salario);
     }
