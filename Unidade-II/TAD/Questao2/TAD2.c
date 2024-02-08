@@ -29,7 +29,7 @@ void copia_dados(FILE *fl, int n, Funcionario **pessoal)
 
         printf("Digite o Departamento do Funcionario: \t");
         scanf(" %c", &pessoal[i]->Departamento);
-        toupper(pessoal[i]->Departamento);
+        pessoal[i]->Departamento = toupper(pessoal[i]->Departamento);
         fprintf(fl, "\t%c", pessoal[i]->Departamento);
 
         printf("Digite o salario do Funcionario: \t");
@@ -43,10 +43,12 @@ void imprime_folha_pagamento(int n, Funcionario **pessoal, char depto)
 {
 
     int i;
+    printf("Funcional\tNome\tDepartamento\tSalario\n");
     for (i = 0; i < n; i++)
-        printf("Funcional\tNome\tDepartamento\tSalario\n");
-    if (depto == pessoal[i]->Departamento);
     {
-        printf("%[^\n]\t%[^\n]\t%c\t%.2f", pessoal[i]->Funcional, pessoal[i]->Nome, pessoal[i]->Departamento, pessoal[i]->Salario);
+        if (depto == pessoal[i]->Departamento)
+        {
+            printf("%[^\n]\t%[^\n]\t%c\t%.2f", pessoal[i]->Funcional, pessoal[i]->Nome, pessoal[i]->Departamento, pessoal[i]->Salario);
+        }
     }
 }

@@ -13,6 +13,7 @@ int main(){
     copia_dados(fl, n, pessoal);
     printf("Digite o departento\n");
     scanf(" %c", &depto);
+    depto = toupper(depto);
     imprime_folha_pagamento(n, pessoal, depto);
 
     return 0;
