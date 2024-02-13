@@ -43,12 +43,18 @@ void imprime_folha_pagamento(int n, Funcionario **pessoal, char depto)
 {
 
     int i;
+    float totalfolha;
+    printf("Departamento %c\n", depto);
     printf("Funcional\tNome\tDepartamento\tSalario\n");
     for (i = 0; i < n; i++)
     {
         if (depto == pessoal[i]->Departamento)
         {
-            printf("%[^\n]\t%[^\n]\t%c\t%.2f", pessoal[i]->Funcional, pessoal[i]->Nome, pessoal[i]->Departamento, pessoal[i]->Salario);
+            printf("%s \t %s \t %c \t %.2f\n", pessoal[i]->Funcional, pessoal[i]->Nome, pessoal[i]->Departamento, pessoal[i]->Salario);
         }
     }
+    for (i = 0; i < n; i++){
+        totalfolha += pessoal[i]->Salario;
+    }
+    printf("Total folha de pagamento = %.2f\n\n", totalfolha);
 }
