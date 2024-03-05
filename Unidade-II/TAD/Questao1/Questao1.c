@@ -19,6 +19,7 @@ e) Escreva uma função main para testar as funções anteriores.*/
 
 int main()
 {
+	Ingressos *i;
 	menu();
 	return 0;
 }
