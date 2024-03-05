@@ -63,12 +63,14 @@ Lista *Eliminar_Elemento(Lista *lista, int Apagar)
 
     Lista *Atual = lista;
     Lista *Anterior = NULL;
-    while(Atual->informacao != Apagar && Atual != NULL){
-        
+    while (Atual->informacao != Apagar && Atual != NULL)
+    {
+
         Anterior = Atual;
         Atual = Atual->pro_informacao;
     }
-    if(Anterior == NULL){
+    if (Anterior == NULL)
+    {
         free(Atual);
         return lista;
     }
@@ -76,16 +78,18 @@ Lista *Eliminar_Elemento(Lista *lista, int Apagar)
     {
         return lista;
     }
-    else{
+    else
+    {
         Anterior->pro_informacao = Atual->pro_informacao;
         free(Atual);
         return lista;
-    }    
+    }
     printf("objeto não encontrado\n");
     return lista;
 }
 
-int Elementos_Maior_Que_N(Lista *lista, int N){
+int Elementos_Maior_Que_N(Lista *lista, int N)
+{
 
     Lista *contador;
     int Contador_de_Maiores;
@@ -96,14 +100,22 @@ int Elementos_Maior_Que_N(Lista *lista, int N){
             Contador_de_Maiores++;
         }
     }
+    return Contador_de_Maiores;
 }
 
-Lista *Ultimo_Elemento(Lista *lista){
+Lista *Ultimo_Elemento(Lista *lista)
+{
 
-   Lista *Ultimo_Elemento;
-   while(lista->pro_informacao != NULL){
-   Ultimo_Elemento = lista;
-   lista = lista->pro_informacao;
-   }
-    
+    Lista *Ultimo_Elemento;
+    if (lista == NULL)
+    {
+        return NULL;
+    }
+
+    while (lista->pro_informacao != NULL)
+    {
+        Ultimo_Elemento = lista;
+        lista = lista->pro_informacao;
+    }
+    return Ultimo_Elemento;
 }
