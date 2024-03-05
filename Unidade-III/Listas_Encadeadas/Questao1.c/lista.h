@@ -44,3 +44,12 @@ int Elementos_Maior_Que_N(Lista *lista, int N);
 último nó de uma lista encadeada. Essa função deve obedecer ao protótipo:
 Lista* ultimo(Lista* l);*/
 Lista *Ultimo_Elemento(Lista *lista);
+
+/*3) Implemente uma função que receba duas listas encadeadas de valores reais e
+retorne a lista resultante da concatenação das duas listas recebidas como
+parâmetros, isto é, após a concatenação, o último elemento da primeira lista
+deve apontar para o primeiro elemento da segunda lista, conforme ilustrado a
+seguir:
+Essa função deve obedecer ao protótipo: Lista* contatena(Lista* l1, Lista* l2);*/
+Lista *Concatenar_Lista(Lista *lista1, Lista *lista2);
+

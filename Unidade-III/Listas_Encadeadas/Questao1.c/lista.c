@@ -119,3 +119,12 @@ Lista *Ultimo_Elemento(Lista *lista)
     }
     return Ultimo_Elemento;
 }
+
+Lista *Concatenar_Lista(Lista *lista1, Lista *lista2)
+{
+
+    Lista *Ultimo_Elemento_lista1 = Ultimo_Elemento(lista1);
+    Lista *Lista_Concatenada = lista2;
+    Lista_Concatenada = Ultimo_Elemento_lista1;
+}
+
