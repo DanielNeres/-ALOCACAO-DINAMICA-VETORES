@@ -47,7 +47,7 @@ void Busca_Elemento(Lista *lista, int Busca)
 {
 
     Lista *contador;
-    for (contador = lista; contador != NULL; contador->pro_informacao)
+    for (contador = lista; contador != NULL; contador = contador->pro_informacao)
     {
         if (contador->informacao == Busca)
         {
@@ -92,8 +92,8 @@ int Elementos_Maior_Que_N(Lista *lista, int N)
 {
 
     Lista *contador;
-    int Contador_de_Maiores;
-    for (contador = lista; contador != NULL; contador->pro_informacao)
+    int Contador_de_Maiores = 0;
+    for (contador = lista; contador != NULL; contador = contador->pro_informacao)
     {
         if (contador->informacao > N)
         {
