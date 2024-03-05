@@ -97,3 +97,13 @@ int Elementos_Maior_Que_N(Lista *lista, int N){
         }
     }
 }
+
+Lista *Ultimo_Elemento(Lista *lista){
+
+   Lista *Ultimo_Elemento;
+   while(lista->pro_informacao != NULL){
+   Ultimo_Elemento = lista;
+   lista = lista->pro_informacao;
+   }
+    
+}

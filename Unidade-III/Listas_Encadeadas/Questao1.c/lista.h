@@ -43,5 +43,4 @@ int Elementos_Maior_Que_N(Lista *lista, int N);
 /*2) Implemente uma função que tenha como valor de retorno o ponteiro para o
 último nó de uma lista encadeada. Essa função deve obedecer ao protótipo:
 Lista* ultimo(Lista* l);*/
-
 Lista *Ultimo_Elemento(Lista *lista);
