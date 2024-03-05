@@ -53,3 +53,8 @@ seguir:
 Essa função deve obedecer ao protótipo: Lista* contatena(Lista* l1, Lista* l2);*/
 Lista *Concatenar_Lista(Lista *lista1, Lista *lista2);
 
+/*4) Considere listas de valores inteiros e implemente uma função que receba como
+parâmetros uma lista encadeada e um valor inteiro n, retire da lista todas as
+ocorrências de n e retorne a lista resultante. Essa função deve obedecer ao
+protótipo: Lista* retira_n(Lista* l, int n);*/
+Lista *Retira_Elemnetos_N(Lista *lista, int N);

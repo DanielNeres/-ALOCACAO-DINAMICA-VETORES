@@ -124,7 +124,43 @@ Lista *Concatenar_Lista(Lista *lista1, Lista *lista2)
 {
 
     Lista *Ultimo_Elemento_lista1 = Ultimo_Elemento(lista1);
-    Lista *Lista_Concatenada = lista2;
-    Lista_Concatenada = Ultimo_Elemento_lista1;
+    Lista *Lista_Concatenada = Ultimo_Elemento_lista1;
+    Lista_Concatenada = lista2;
 }
 
+Lista *Retira_Elemnetos_N(Lista *lista, int N)
+{
+
+    Lista *Atual = lista;
+    Lista *Anterior = NULL;
+    int Continuar_Loop;
+
+    while (Continuar_Loop == 1)
+    {
+        Continuar_Loop = 0;
+        while (Atual->informacao != N && Atual != NULL)
+        {
+
+            Anterior = Atual;
+            Atual = Atual->pro_informacao;
+            Continuar_Loop = 1;
+        }
+        if (Anterior == NULL)
+        {
+            free(Atual);
+            return lista;
+        }
+        else if (Atual == NULL)
+        {
+            return lista;
+        }
+        else
+        {
+            Anterior->pro_informacao = Atual->pro_informacao;
+            free(Atual);
+            return lista;
+        }
+        printf("objeto não encontrado\n");
+        return lista;
+    }
+}
