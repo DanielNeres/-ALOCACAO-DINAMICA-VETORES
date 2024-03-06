@@ -139,4 +139,11 @@ Lista *Retira_N_Elementos(Lista *lista, int N)
         Primeiro_Elemento = lista->pro_informacao;
         free(lista);
     }
+    for(Atual = lista; Atual != NULL;  Anterior = lista, Atual = Atual->pro_informacao){
+        if(Atual->informacao == N){
+            Anterior->pro_informacao = Atual->pro_informacao;
+            free(Atual);
+        }
+    }
+    return lista;
 }
