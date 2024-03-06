@@ -128,7 +128,7 @@ Lista *Concatenar_Lista(Lista *lista1, Lista *lista2)
     return lista1;
 }
 
-Lista *Retira_Elemnetos_N(Lista *lista, int N)
+Lista *Retira_N_Elementos(Lista *lista, int N)
 {
 
     Lista *Atual = lista;

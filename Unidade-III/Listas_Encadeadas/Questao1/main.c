@@ -17,6 +17,9 @@ int main()
     Lista_encadeada2 = insere_elemento(Lista_encadeada2, 5);
     Lista *Lista_Concatenada = Concatenar_Lista(Lista_encadeada, Lista_encadeada2);
     Imprimir_Elementos(Lista_Concatenada);
+    Lista_Concatenada = Retira_N_Elementos(Lista_Concatenada, 3);
+    printf("lista retirada\n");
+    Imprimir_Elementos(Lista_Concatenada);
 
     // Faça algo com o elemento 'ultimo' (por exemplo, imprimir seu valor)
 }

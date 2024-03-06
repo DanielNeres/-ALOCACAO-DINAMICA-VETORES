@@ -56,4 +56,4 @@ Lista *Concatenar_Lista(Lista *lista1, Lista *lista2);
 parâmetros uma lista encadeada e um valor inteiro n, retire da lista todas as
 ocorrências de n e retorne a lista resultante. Essa função deve obedecer ao
 protótipo: Lista* retira_n(Lista* l, int n);*/
-Lista *Retira_Elemnetos_N(Lista *lista, int N);
+Lista *Retira_N_Elementos(Lista *lista, int N);
