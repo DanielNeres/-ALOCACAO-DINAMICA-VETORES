@@ -133,34 +133,10 @@ Lista *Retira_N_Elementos(Lista *lista, int N)
 
     Lista *Atual = lista;
     Lista *Anterior = NULL;
-    int Continuar_Loop = 1;
 
-    while (Continuar_Loop == 1)
-    {
-        Continuar_Loop = 0;
-        while (Atual->informacao != N && Atual != NULL)
-        {
-
-            Anterior = Atual;
-            Atual = Atual->pro_informacao;
-            Continuar_Loop = 1;
-        }
-        if (Anterior == NULL)
-        {
-            free(Atual);
-            return lista;
-        }
-        else if (Atual == NULL)
-        {
-            return lista;
-        }
-        else
-        {
-            Anterior->pro_informacao = Atual->pro_informacao;
-            free(Atual);
-            return lista;
-        }
-        printf("objeto não encontrado\n");
-        return lista;
+    Lista *Primeiro_Elemento = lista;
+    while(Primeiro_Elemento->informacao == N){
+        Primeiro_Elemento = lista->pro_informacao;
+        free(lista);
     }
 }
