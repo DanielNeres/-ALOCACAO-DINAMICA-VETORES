@@ -2,7 +2,6 @@
 #include <stdio.h>
 
 typedef struct lista Lista;
- 
 
 /**
  * Função para criar o primeiro elemento da lista

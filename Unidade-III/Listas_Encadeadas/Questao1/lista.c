@@ -14,7 +14,7 @@ Lista *criar_Lista(void)
 Lista *insere_elemento(Lista *lista, int valor)
 {
 
-    Lista *Novo_No = (Lista *)malloc(sizeof(lista));
+    Lista *Novo_No = (Lista *)malloc(sizeof(Lista));
     if (Novo_No == NULL)
     {
         exit(1);
@@ -117,7 +117,7 @@ Lista *Ultimo_Elemento(Lista *lista)
         Ultimo_Elemento = lista;
         lista = lista->pro_informacao;
     }
-    return Ultimo_Elemento;
+    return lista;
 }
 
 Lista *Concatenar_Lista(Lista *lista1, Lista *lista2)
@@ -133,7 +133,7 @@ Lista *Retira_Elemnetos_N(Lista *lista, int N)
 
     Lista *Atual = lista;
     Lista *Anterior = NULL;
-    int Continuar_Loop;
+    int Continuar_Loop = 1;
 
     while (Continuar_Loop == 1)
     {
