@@ -9,10 +9,14 @@ int main()
     Lista_encadeada = insere_elemento(Lista_encadeada, 13);
     Lista_encadeada = insere_elemento(Lista_encadeada, 32);
     Lista_encadeada = insere_elemento(Lista_encadeada, 23);
-    Imprimir_Elementos(Lista_encadeada);
-
-    Lista *ultimo = Ultimo_Elemento(Lista_encadeada);
-    Imprimir_Elementos(ultimo);
+    Lista *Lista_encadeada2 = criar_Lista();
+    Lista_encadeada2 = insere_elemento(Lista_encadeada2, 1);
+    Lista_encadeada2 = insere_elemento(Lista_encadeada2, 2);
+    Lista_encadeada2 = insere_elemento(Lista_encadeada2, 3);
+    Lista_encadeada2 = insere_elemento(Lista_encadeada2, 4);
+    Lista_encadeada2 = insere_elemento(Lista_encadeada2, 5);
+    Lista *Lista_Concatenada = Concatenar_Lista(Lista_encadeada, Lista_encadeada2);
+    Imprimir_Elementos(Lista_Concatenada);
 
     // Faça algo com o elemento 'ultimo' (por exemplo, imprimir seu valor)
 }

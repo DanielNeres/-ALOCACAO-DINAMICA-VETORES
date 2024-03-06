@@ -124,8 +124,8 @@ Lista *Concatenar_Lista(Lista *lista1, Lista *lista2)
 {
 
     Lista *Ultimo_Elemento_lista1 = Ultimo_Elemento(lista1);
-    Lista *Lista_Concatenada = Ultimo_Elemento_lista1;
-    Lista_Concatenada = lista2;
+    Ultimo_Elemento_lista1->pro_informacao = lista2;
+    return lista1;
 }
 
 Lista *Retira_Elemnetos_N(Lista *lista, int N)
