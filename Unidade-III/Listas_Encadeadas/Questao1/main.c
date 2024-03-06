@@ -12,6 +12,4 @@ int main()
     Lista_encadeada = Retira_N_Elementos(Lista_encadeada, 32);
     printf("lista retirada\n");
     Imprimir_Elementos(Lista_encadeada);
-
-    // Faça algo com o elemento 'ultimo' (por exemplo, imprimir seu valor)
 }
