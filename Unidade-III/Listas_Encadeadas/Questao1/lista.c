@@ -128,30 +128,33 @@ Lista *Concatenar_Lista(Lista *lista1, Lista *lista2)
     return lista1;
 }
 
-Lista *Retira_N_Elementos(Lista *lista, int N) {
+Lista *Retira_N_Elementos(Lista *lista, int N)
+{
     Lista *Atual;
-    Lista *Anterior = NULL; // Inicialize Anterior como NULL
+    Lista *Anterior;
 
-    while (lista != NULL && lista->informacao == N) {
-        Lista *prox = lista->pro_informacao; // Salve o próximo nó
+    Lista *Primeiro_Elemento;
+    while (lista != NULL && lista->informacao == N)
+    {
+        Primeiro_Elemento = lista->pro_informacao;
         free(lista);
-        lista = prox; // Avance para o próximo nó
+        lista = Primeiro_Elemento;
     }
 
-    Lista *Primeiro_Elemento = lista;
-
-    for (Atual = lista; Atual != NULL; ) {
-        if (Atual->informacao == N) {
-            if (Anterior != NULL) {
-                Anterior->pro_informacao = Atual->pro_informacao;
-            }
+    for (Atual = lista; Atual != NULL;)
+    {
+        if (Atual->informacao == N)
+        {
+            Anterior->pro_informacao = Atual->pro_informacao;
             Lista *temp = Atual;
-            Atual = Atual->pro_informacao; // Avance para o próximo nó
+            Atual = Atual->pro_informacao;
             free(temp);
-        } else {
+        }
+        else
+        {
             Anterior = Atual;
-            Atual = Atual->pro_informacao; // Avance para o próximo nó
+            Atual = Atual->pro_informacao;
         }
     }
-    return Primeiro_Elemento;
+    return lista;
 }
