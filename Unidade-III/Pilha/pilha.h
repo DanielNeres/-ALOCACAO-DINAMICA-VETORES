@@ -9,6 +9,10 @@ typedef struct pilha Pilha;
 */
 Pilha* pilha_cria();
 
+/**
+ * adiciona um novo elemento a pilha
+ * @param Pilha*
+*/
 void pilha_push(Pilha* pilha_var, float valor);
 
 float pilha_pop(Pilha* pilha_var);

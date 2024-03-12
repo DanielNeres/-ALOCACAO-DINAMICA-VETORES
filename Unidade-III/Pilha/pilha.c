@@ -45,3 +45,11 @@ void pilha_libera(Pilha* pilha_var){
 pilha_vazia(Pilha* pilha_var){
     return (pilha_var->n == 0);
 }
+
+void pilha_imprime(Pilha* pilha_var){
+    int contador;
+    for(contador = 0; contador < pilha_var->n; contador++){
+        printf("%d\n", pilha_var[contador].vet);
+    }
+    
+}
