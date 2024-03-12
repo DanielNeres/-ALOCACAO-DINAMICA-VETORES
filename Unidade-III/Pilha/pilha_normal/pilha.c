@@ -35,10 +35,7 @@ float pilha_pop(Pilha* pilha_var){
 }
 
 void pilha_libera(Pilha* pilha_var){
-    int contador;
-    for(contador = 0; contador < pilha_var->n; contador++){
-        free(pilha_var[contador].vet);
-    }
+    
     free(pilha_var);
 }
 
