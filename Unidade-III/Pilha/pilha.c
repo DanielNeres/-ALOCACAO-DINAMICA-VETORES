@@ -48,7 +48,7 @@ pilha_vazia(Pilha* pilha_var){
 
 void pilha_imprime(Pilha* pilha_var){
     int contador;
-    for(contador = 0; contador < pilha_var->n; contador++){
+    for(contador = pilha_var->n - 1; contador > 0; contador--){
         printf("%d\n", pilha_var[contador].vet);
     }
     
