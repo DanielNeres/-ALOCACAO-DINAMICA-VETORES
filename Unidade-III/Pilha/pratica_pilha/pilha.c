@@ -32,3 +32,16 @@ float pilha_pop(Pilha* pilha){
     free(key);
     return valor;
 }
+
+int pilha_vazia(Pilha* pilha){
+
+    int pilha_vazia;
+    if (pilha == NULL){
+        return 1;
+    }
+    return 0;
+}
+
+void pilha_libera(Pilha* pilha){
+    
+}
