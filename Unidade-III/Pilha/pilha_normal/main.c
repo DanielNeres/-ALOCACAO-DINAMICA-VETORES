@@ -9,6 +9,6 @@ int main(){
     valor = 4;
     pilha_push(Pilha_var, valor);
     valor = pilha_pop(Pilha_var);
-    pilha_libera(pilha_libera);
+    pilha_libera(Pilha_var);
 
 }
