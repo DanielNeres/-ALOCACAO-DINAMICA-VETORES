@@ -1,3 +1,6 @@
+#include <stdlib.h>
+#include <stdio.h>
+
 typedef struct pilha Pilha;
 
 Pilha* pilha_cria(void);
