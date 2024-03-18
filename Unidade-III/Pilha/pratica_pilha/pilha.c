@@ -43,5 +43,12 @@ int pilha_vazia(Pilha* pilha){
 }
 
 void pilha_libera(Pilha* pilha){
+
+    while (pilha == NULL)
+    {
+        Pilha *key = pilha;
+        pilha = pilha->proxima;
+        free(key);
+    }
     
 }
