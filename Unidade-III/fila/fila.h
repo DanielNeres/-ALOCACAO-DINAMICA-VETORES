@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 typedef struct  _fila
 {
     int ini, fim;
@@ -7,3 +9,7 @@ typedef struct  _fila
 }Fila;
 
 Fila *CriaFila(int max_siz);
+void DestruirFila(Fila **Q);
+int FilaVazia(Fila *Q);
+int FilaCheia(Fila *Q);
+int InsereFila(Fila *Q, int elem);
