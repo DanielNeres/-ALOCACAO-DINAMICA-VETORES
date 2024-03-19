@@ -51,3 +51,14 @@ int RemoveFila(Fila *Q){
         return 1;
     }
 }
+
+int ConsultaFila(Fila *Q, int *elem) {
+
+    if(FilaVazia(Q)){
+
+        return 0;
+    } else{
+        *elem = Q->val[Q->ini];
+        return 1;
+    }
+}
